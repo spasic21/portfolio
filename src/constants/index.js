@@ -15,6 +15,7 @@ import pokemonGameGif2 from "../assets/pokemonGameGif2.mp4";
 import pokemonGameImage1 from "../assets/pokemonGameImage1.png";
 import pokemonApiImage1 from "../assets/pokemonApiImage1.png";
 import pokemonApiImage2 from "../assets/pokemonApiImage2.png";
+import pokemonApiImage3 from "../assets/pokemonApiImage3.png";
 import oldDominionFreightLineLogo from "../assets/old_dominion_freight_line_logo.png";
 import bestBuyLogo from "../assets/best_buy_logo.png";
 import marriottVacationsWorldwideLogo from "../assets/marriott_vacations_worldwide_logo.png";
@@ -65,12 +66,14 @@ export const personalProjects = [
     },
     {
         title: 'Pokemon API',
-        description: 'A REST API built using Spring Boot that provides Pokemon stats and other important information for the game Pokemon Clone. ' +
-            'The API provides endpoints for retrieving Pokemon data by pokedex number, or by a range from 1 to 251.',
-        href: 'https://github.com/spasic21/PokemonClone',
+        description: 'RESTful API using Java and Spring Boot to serve detailed Pokemon data essential for a turn-based RPG game clone. ' +
+            'The API efficiently organizes Pokemon stats and attributes, enabling retrieval by Pokedex number or within specified ranges (1-251). ' +
+            'Designed with scalability and ease of use in mind, this API helps me while developing my Pokemon clone game by providing reliable and structured data access.',
+        href: 'https://github.com/spasic21/PokemonApi',
         images: [
             pokemonApiImage1,
-            pokemonApiImage2
+            pokemonApiImage2,
+            pokemonApiImage3
         ]
     }
 ];
