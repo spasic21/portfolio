@@ -36,7 +36,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="xl:col-span-3 xl:row-span-1">
+                <div className="xl:col-span-3 md:col-span-2 xl:row-span-1">
                     <div className="grid-container">
                         <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[276px] h-fit object-contain"/>
                         <p className="grid-headtext">
@@ -45,10 +45,11 @@ const About = () => {
                         <p className="grid-subtext">
                             I'm experienced in building and maintaining back-end systems, creating APIs, and modernizing
                             legacy applications using Java and Spring Boot. Proficient in databases like Oracle SQL and
-                            MongoDB, with a strong focus on delivering reliable and efficient solutions. Experienced in
-                            Agile teams, improving workflows, and enhancing CI/CD pipelines using tools like Git,
-                            Docker, and Jenkins. Dedicated to solving complex problems and delivering high-quality
-                            software that meets business needs.
+                            MongoDB, with a strong focus on delivering reliable and efficient solutions. Experienced
+                            working in Agile teams, improving workflows, and enhancing CI/CD pipelines using tools like
+                            Git, Docker, and Jenkins. Dedicated to solving complex problems and delivering high-quality
+                            software that meets business needs. Looking forward to joining a team that is passionate about
+                            creating innovative solutions.
                         </p>
                     </div>
                 </div>

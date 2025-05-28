@@ -23,7 +23,9 @@ const Hero = () => {
 
                             <p className="grid-subtext">
                                 Welcome to my portfolio! I'm a software engineer with experience in back end development
-                                in Java and Spring Boot primarily, who is also a big fan of One Piece, as you can see.
+                                in Java and Spring Boot primarily, but also in front end development using React as well.
+                                Currently interested in getting a role full-stack development.
+                                For fun, I like to work on game development!
                             </p>
                         </div>
                     </div>
