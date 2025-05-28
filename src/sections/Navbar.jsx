@@ -2,6 +2,7 @@ import {useState} from "react";
 import {navLinks} from "../constants/index.js";
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
+import github from "../assets/github.svg";
 
 const NavItems = () => {
     return (
@@ -26,9 +27,14 @@ const Navbar = () => {
         <header className="fixed top-0 left-0 right-0 z-50 bg-black/90">
             <div className="max-w-7xl mx-auto">
                 <div className="flex items-center justify-between py-5 mx-auto c-space">
-                    <a href="/" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
-                        Aleksandar
-                    </a>
+                    <div className="flex items-center gap-5">
+                        <a href="/portfolio/" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
+                            Aleksandar
+                        </a>
+                        <a href="https://github.com/spasic21" target="_blank" rel="noreferrer">
+                            <img src={github} alt="github" className="w-8 h-8" />
+                        </a>
+                    </div>
 
                     <button onClick={toggleMenu} className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex">
                         <img src={isOpen ? close : menu} alt="toggle" className="w-6 h-6" />
