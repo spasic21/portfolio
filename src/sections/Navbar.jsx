@@ -1,5 +1,7 @@
 import {useState} from "react";
 import {navLinks} from "../constants/index.js";
+import close from "../assets/close.svg";
+import menu from "../assets/menu.svg";
 
 const NavItems = () => {
     return (
@@ -29,7 +31,7 @@ const Navbar = () => {
                     </a>
 
                     <button onClick={toggleMenu} className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex">
-                        <img src={isOpen ? "assets/close.svg" : "assets/menu.svg"} alt="toggle" className="w-6 h-6" />
+                        <img src={isOpen ? close : menu} alt="toggle" className="w-6 h-6" />
                     </button>
 
                     <nav className="sm:flex hidden">

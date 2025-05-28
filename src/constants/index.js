@@ -8,7 +8,18 @@ import {
     threejs,
     git,
     docker
-} from "../../public/assets";
+} from "../assets";
+
+import pokemonGameGif1 from "../assets/pokemonGameGif1.mp4";
+import pokemonGameGif2 from "../assets/pokemonGameGif2.mp4";
+import pokemonGameImage1 from "../assets/pokemonGameImage1.png";
+import pokemonApiImage1 from "../assets/pokemonApiImage1.png";
+import pokemonApiImage2 from "../assets/pokemonApiImage2.png";
+import oldDominionFreightLineLogo from "../assets/old_dominion_freight_line_logo.png";
+import bestBuyLogo from "../assets/best_buy_logo.png";
+import marriottVacationsWorldwideLogo from "../assets/marriott_vacations_worldwide_logo.png";
+import andersenWindowsLogo from "../assets/andersen_windows_logo.png";
+import expressScriptsLogo from "../assets/express_scripts_logo.png";
 
 export const navLinks = [
     {
@@ -47,9 +58,9 @@ export const personalProjects = [
             'This project showcases object-oriented design, custom game loop implementation, and Java GUI programming',
         href: 'https://github.com/spasic21/PokemonClone',
         images: [
-            '/assets/pokemonGameGif1.mp4',
-            '/assets/pokemonGameGif2.mp4',
-            '/assets/pokemonGameImage1.png'
+            pokemonGameGif1,
+            pokemonGameGif2,
+            pokemonGameImage1
         ]
     },
     {
@@ -58,8 +69,8 @@ export const personalProjects = [
             'The API provides endpoints for retrieving Pokemon data by pokedex number, or by a range from 1 to 251.',
         href: 'https://github.com/spasic21/PokemonClone',
         images: [
-            '/assets/pokemonApiImage1.png',
-            '/assets/pokemonApiImage2.png'
+            pokemonApiImage1,
+            pokemonApiImage2
         ]
     }
 ];
@@ -71,7 +82,7 @@ export const workExperiences = [
         position: 'Associate Software Engineer',
         duration: 'December 2022 – Present',
         title: "Developed a Java and SQL-based UI and web service for driver projections, improving trailer time estimation.",
-        icon: '/assets/old_dominion_freight_line_logo.png',
+        icon: oldDominionFreightLineLogo,
         animation: 'clapping',
     },
     {
@@ -80,7 +91,7 @@ export const workExperiences = [
         position: 'Software Engineer (Java & Spring Boot)',
         duration: 'May 2022 - November 2022',
         title: 'Built Spring Boot APIs for Amazon S3 data handling, integrating robust JUnit and Groovy tests for functionality validation.',
-        icon: '/assets/best_buy_logo.png',
+        icon: bestBuyLogo,
         animation: 'swimming'
     },
     {
@@ -89,7 +100,7 @@ export const workExperiences = [
         position: 'Back-End Java Developer',
         duration: 'April 2021 - April 2022',
         title: 'Developed Spring Boot REST APIs for seamless integration with React and mobile apps.',
-        icon: '/assets/marriott_vacations_worldwide_logo.png',
+        icon: marriottVacationsWorldwideLogo,
         animation: 'cheering'
     },
     {
@@ -98,7 +109,7 @@ export const workExperiences = [
         position: 'Software Engineer',
         duration: 'October 2019 - March 2020',
         title: 'Modernized legacy processes by replacing Excel macros with a Java Spring Boot application.',
-        icon: '/assets/andersen_windows_logo.png',
+        icon: andersenWindowsLogo,
         animation: 'dancing'
     },
     {
@@ -107,7 +118,7 @@ export const workExperiences = [
         position: 'Back-End Java Developer',
         duration: 'December 2018 - June 2019',
         title: 'Redesigned Spring Boot REST APIs for the customer rebate application, improving performance.',
-        icon: '/assets/express_scripts_logo.png',
+        icon: expressScriptsLogo,
         animation: 'salute'
     }
 ];

@@ -1,6 +1,7 @@
 import Button from "../components/Button.jsx";
 import World from "../components/World.jsx";
 import TechStack from "./TechStack.jsx";
+import grid3 from "../assets/grid3.png";
 
 const About = () => {
     return (
@@ -38,7 +39,7 @@ const About = () => {
 
                 <div className="xl:col-span-3 md:col-span-2 xl:row-span-1">
                     <div className="grid-container">
-                        <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[276px] h-fit object-contain"/>
+                        <img src={grid3} alt="grid-3" className="w-full sm:h-[276px] h-fit object-contain"/>
                         <p className="grid-headtext">
                             Professional Summary
                         </p>

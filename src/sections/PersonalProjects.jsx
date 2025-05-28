@@ -1,5 +1,8 @@
 import {personalProjects} from "../constants/index.js";
 import {useState} from "react";
+import leftArrow from "../assets/left-arrow.png";
+import upArrow from "../assets/arrow-up.png";
+import rightArrow from "../assets/right-arrow.png";
 import Slideshow from "../components/Slideshow.jsx";
 
 const projectCount = personalProjects.length;
@@ -32,14 +35,14 @@ const PersonalProjects = () => {
                         <div className="mt-auto">
                             <div className="flex justify-between items-center">
                                 <button className="arrow-btn" onClick={() => handleNavigation("previous")}>
-                                    <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
+                                    <img src={leftArrow} alt="left arrow" className="w-4 h-4" />
                                 </button>
                                 <a className="flex items-center gap-2 cursor-pointer text-white-600" href={currentProject.href} target="_blank" rel="noreferrer">
                                     <p>Check Out Project</p>
-                                    <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
+                                    <img src={upArrow} alt="arrow" className="w-3 h-3" />
                                 </a>
                                 <button className="arrow-btn" onClick={() => handleNavigation("next")}>
-                                    <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
+                                    <img src={rightArrow} alt="right arrow" className="w-4 h-4" />
                                 </button>
                             </div>
                         </div>

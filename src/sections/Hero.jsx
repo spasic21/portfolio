@@ -1,4 +1,5 @@
-import video from "/assets/thousand_sunny.mp4"
+import video from "../assets/thousand_sunny.mp4"
+import luffy from "../assets/luffy.png"
 
 const Hero = () => {
     return (
@@ -14,7 +15,7 @@ const Hero = () => {
 
                 <div className="col-span-1 xl:row-span-2">
                     <div className="grid-container">
-                        <img src="/assets/luffy.png" alt="luffy" className="w-full sm:h-[276px] h-fit object-contain"/>
+                        <img src={luffy} alt="luffy" className="w-full sm:h-[276px] h-fit object-contain"/>
 
                         <div>
                             <p className="grid-headtext">

@@ -10,7 +10,7 @@ import {SkeletonUtils} from 'three-stdlib'
 
 const Avatar = ({animationName = 'idle', ...props}) => {
     const group = React.useRef()
-    const {scene, animations} = useGLTF('/models/avatar.glb')
+    const {scene, animations} = useGLTF(import.meta.env.BASE_URL + 'models/avatar.glb')
     const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
     const {nodes, materials} = useGraph(clone)
     const {actions} = useAnimations(animations, group)
@@ -36,6 +36,6 @@ const Avatar = ({animationName = 'idle', ...props}) => {
     )
 }
 
-useGLTF.preload('/models/avatar.glb')
+useGLTF.preload(import.meta.env.BASE_URL + 'models/avatar.glb')
 
 export default Avatar;

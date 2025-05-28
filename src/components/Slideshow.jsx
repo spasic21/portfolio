@@ -1,4 +1,6 @@
 import {useEffect, useState} from "react";
+import leftArrow from "../assets/left-arrow.png";
+import rightArrow from "../assets/right-arrow.png";
 
 const Slideshow = ({ images }) => {
 
@@ -70,13 +72,13 @@ const Slideshow = ({ images }) => {
                 className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
                 onClick={goToPrevious}
             >
-                <img src="/assets/left-arrow.png" alt="Previous" className="w-4 h-4" />
+                <img src={leftArrow} alt="Previous" className="w-4 h-4" />
             </button>
             <button
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
                 onClick={goToNext}
             >
-                <img src="/assets/right-arrow.png" alt="Next" className="w-4 h-4" />
+                <img src={rightArrow} alt="Next" className="w-4 h-4" />
             </button>
 
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">

@@ -1,12 +1,12 @@
 import Globe from "react-globe.gl";
 import {useEffect, useRef} from "react";
 import {Mesh, MeshPhongMaterial, SphereGeometry, TextureLoader} from "three";
+import cloudsImageUrl from "../assets/clouds.png";
 
 const World = () => {
 
     const globeRef = useRef();
 
-    const cloudsImageUrl = "/assets/clouds.png";
     const cloudsAlt = 0.004;
     const cloudsRotationSpeed = -0.006;
 
