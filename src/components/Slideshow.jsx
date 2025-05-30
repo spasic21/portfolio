@@ -44,10 +44,10 @@ const Slideshow = ({ images }) => {
 
     return (
         <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full relative">
-            <div className="w-full h-full overflow-hidden rounded-lg">
+            <div className="w-full h-full overflow-hidden rounded-lg flex justify-center items-center">
                 {isVideo(images[currentIndex]) ? (
                     <video
-                        className="w-full h-96 object-cover"
+                        className="w-full h-[36rem] object-contain"
                         style={{ borderRadius: '10px' }}
                         autoPlay
                         loop
@@ -62,7 +62,7 @@ const Slideshow = ({ images }) => {
                     <img
                         src={images[currentIndex]}
                         alt={`Slide ${currentIndex + 1}`}
-                        className="w-full h-96 object-cover"
+                        className="w-full h-[36rem] object-contain"
                         style={{ borderRadius: '10px' }}
                     />
                 )}

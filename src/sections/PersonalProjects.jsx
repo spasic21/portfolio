@@ -27,11 +27,14 @@ const PersonalProjects = () => {
                 <h3 className="head-text">Personal Projects</h3>
 
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 mt-12">
-                    <div className="grid-container h-96 min-h-96 flex flex-col">
-                        <div className="flex flex-col gap-5 text-white-600 my-5">
+                    <div className="grid-container h-[28rem] min-h-[28rem] flex flex-col">
+                        <div className="flex flex-row justify-between items-center text-white-600 my-5">
                             <p className="text-white text-2xl font-semibold">{currentProject.title}</p>
-                            <p className="grid-subtext">{currentProject.description}</p>
+                            <img src={currentProject.logo} alt="logo" className="w-32 h-32 rounded-full" />
                         </div>
+
+                        <p className="text-white-600 text-lg">{currentProject.description}</p>
+
                         <div className="mt-auto">
                             <div className="flex justify-between items-center">
                                 <button className="arrow-btn" onClick={() => handleNavigation("previous")}>

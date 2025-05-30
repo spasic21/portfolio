@@ -20,6 +20,11 @@ import spotifyCloneImage1 from "../assets/spotifyCloneImage1.png";
 import spotifyCloneImage2 from "../assets/spotifyCloneImage2.png";
 import spotifyCloneImage3 from "../assets/spotifyCloneImage3.png";
 
+import luffyGameboy from "../assets/luffyGameboy.jpg";
+import luffyPokeball from "../assets/luffyPokeball.jpg";
+import luffyMusic from "../assets/luffyMusic.jpg"
+
+
 import oldDominionFreightLineLogo from "../assets/old_dominion_freight_line_logo.png";
 import bestBuyLogo from "../assets/best_buy_logo.png";
 import marriottVacationsWorldwideLogo from "../assets/marriott_vacations_worldwide_logo.png";
@@ -62,6 +67,7 @@ export const personalProjects = [
             'The game includes basic sprite rendering, type-based attacks, a simple UI, and turn logic, all developed without external game engines. ' +
             'This project showcases object-oriented design, custom game loop implementation, and Java GUI programming',
         href: 'https://github.com/spasic21/PokemonClone',
+        logo: luffyGameboy,
         images: [
             pokemonGameGif1,
             pokemonGameGif2,
@@ -74,6 +80,7 @@ export const personalProjects = [
             'The API efficiently organizes Pokemon stats and attributes, enabling retrieval by Pokedex number or within specified ranges (1-251). ' +
             'Designed with scalability and ease of use in mind, this API helps me while developing my Pokemon clone game by providing reliable and structured data access.',
         href: 'https://github.com/spasic21/PokemonApi',
+        logo: luffyPokeball,
         images: [
             pokemonApiImage1,
             pokemonApiImage2,
@@ -86,6 +93,7 @@ export const personalProjects = [
             ' It integrates with the Deezer API to fetch songs and play previews, allowing users to browse, play, and control tracks just like a real music app. ' +
             'The app features smooth UI interactions, genre filtering, and playback controls. All wrapped in a modern, clean design.',
         href: 'https://github.com/spasic21/spotify-clone',
+        logo: luffyMusic,
         images: [
             spotifyCloneImage1,
             spotifyCloneImage2,

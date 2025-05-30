@@ -32,7 +32,7 @@ const Navbar = () => {
                             Aleksandar
                         </a>
                         <a href="https://github.com/spasic21" target="_blank" rel="noreferrer">
-                            <img src={github} alt="github" className="w-8 h-8" />
+                            <img src={github} alt="github" className="w-10 h-10" />
                         </a>
                     </div>
 
