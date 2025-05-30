@@ -14,7 +14,7 @@ const Slideshow = ({ images }) => {
 
             return () => clearInterval(interval);
         }
-    }, [images]);
+    }, [currentIndex, images]);
 
     const goToPrevious = () => {
         setCurrentIndex((prevIndex) =>

@@ -16,6 +16,10 @@ import pokemonGameImage1 from "../assets/pokemonGameImage1.png";
 import pokemonApiImage1 from "../assets/pokemonApiImage1.png";
 import pokemonApiImage2 from "../assets/pokemonApiImage2.png";
 import pokemonApiImage3 from "../assets/pokemonApiImage3.png";
+import spotifyCloneImage1 from "../assets/spotifyCloneImage1.png";
+import spotifyCloneImage2 from "../assets/spotifyCloneImage2.png";
+import spotifyCloneImage3 from "../assets/spotifyCloneImage3.png";
+
 import oldDominionFreightLineLogo from "../assets/old_dominion_freight_line_logo.png";
 import bestBuyLogo from "../assets/best_buy_logo.png";
 import marriottVacationsWorldwideLogo from "../assets/marriott_vacations_worldwide_logo.png";
@@ -74,6 +78,18 @@ export const personalProjects = [
             pokemonApiImage1,
             pokemonApiImage2,
             pokemonApiImage3
+        ]
+    },
+    {
+        title: 'Spotify Clone App',
+        description: 'Spotify-inspired music player using React, Tailwind CSS, and Redux for state management.' +
+            ' It integrates with the Deezer API to fetch songs and play previews, allowing users to browse, play, and control tracks just like a real music app. ' +
+            'The app features smooth UI interactions, genre filtering, and playback controls. All wrapped in a modern, clean design.',
+        href: 'https://github.com/spasic21/spotify-clone',
+        images: [
+            spotifyCloneImage1,
+            spotifyCloneImage2,
+            spotifyCloneImage3,
         ]
     }
 ];
