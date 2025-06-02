@@ -89,8 +89,8 @@ export const personalProjects = [
     },
     {
         title: 'Spotify Clone App',
-        description: 'Spotify-inspired music player using React, Tailwind CSS, and Redux for state management.' +
-            ' It integrates with the Deezer API to fetch songs and play previews, allowing users to browse, play, and control tracks just like a real music app. ' +
+        description: 'Spotify-inspired music player using React, Tailwind CSS, and Redux for state management. ' +
+            'It integrates with a lightweight proxy server that I made that communicates with Deezer API to fetch songs and play previews, allowing users to browse, play, and control tracks just like a real music app. ' +
             'The app features smooth UI interactions, genre filtering, and playback controls. All wrapped in a modern, clean design.',
         href: 'https://github.com/spasic21/spotify-clone',
         logo: luffyMusic,
