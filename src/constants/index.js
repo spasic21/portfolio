@@ -1,4 +1,5 @@
 import {BiLogoJava, BiLogoSpringBoot, BiLogoHtml5, BiLogoJavascript, BiLogoCss3, BiLogoReact, BiLogoTailwindCss} from "react-icons/bi";
+import {RiMusic2Line, RiGithubFill} from "react-icons/ri";
 import {
     java,
     springboot,
@@ -68,7 +69,9 @@ export const personalProjects = [
             'Players can select a Pokemon, battle AI-controlled enemies, use various moves, and manage health stats during combat. ' +
             'The game includes basic sprite rendering, type-based attacks, a simple UI, and turn logic, all developed without external game engines. ' +
             'This project showcases object-oriented design, custom game loop implementation, and Java GUI programming',
-        href: 'https://github.com/spasic21/PokemonClone',
+        navLinks: [
+            {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonClone'},
+        ],
         logo: luffyGameboy,
         tech: [
             BiLogoJava
@@ -84,7 +87,9 @@ export const personalProjects = [
         description: 'RESTful API using Java and Spring Boot to serve detailed Pokemon data essential for a turn-based RPG game clone. ' +
             'The API efficiently organizes Pokemon stats and attributes, enabling retrieval by Pokedex number or within specified ranges (1-251). ' +
             'Designed with scalability and ease of use in mind, this API helps me while developing my Pokemon clone game by providing reliable and structured data access.',
-        href: 'https://github.com/spasic21/PokemonApi',
+        navLinks: [
+            {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonApi'}
+        ],
         logo: luffyPokeball,
         tech: [
             BiLogoJava,
@@ -101,7 +106,10 @@ export const personalProjects = [
         description: 'Spotify-inspired music player using React, Tailwind CSS, and Redux for state management. ' +
             'It integrates with a lightweight proxy server that I made that communicates with Deezer API to fetch songs and play previews, allowing users to browse, play, and control tracks just like a real music app. ' +
             'The app features smooth UI interactions, genre filtering, and playback controls. All wrapped in a modern, clean design.',
-        href: 'https://github.com/spasic21/spotify-clone',
+        navLinks: [
+            {icon: RiGithubFill, href: 'https://github.com/spasic21/react-music-app'},
+            {icon: RiMusic2Line, href: 'https://spasic21.github.io/react-music-app/'}
+        ],
         logo: luffyMusic,
         tech: [
             BiLogoHtml5,

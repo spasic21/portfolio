@@ -44,10 +44,27 @@ const PersonalProjects = () => {
                                 <button className="arrow-btn" onClick={() => handleNavigation("previous")}>
                                     <RiArrowLeftLine className="w-6 h-6" />
                                 </button>
-                                <a className="flex items-center gap-2 cursor-pointer text-white-600" href={currentProject.href} target="_blank" rel="noreferrer">
-                                    <p>Check Out Project</p>
-                                    <RiArrowRightUpLine className="w-6 h-6 text-white-600" />
-                                </a>
+
+                                {currentProject.navLinks.map(({icon: Icon, href}, index) => {
+                                    const toolTip = href.includes(".com") ? "Checkout Github Repo!" : "Checkout Live Site!";
+
+                                    return (
+                                        <a
+                                            key={index}
+                                            className="relative group flex items-center gap-2 cursor-pointer text-white-600"
+                                            href={href}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            <Icon className="tech-logo"/>
+
+                                            <span className="absolute top-full left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-gray-800 text-white text-xs px-2 py-1 mt-1 rounded z-50 whitespace-nowrap">
+                                                {toolTip}
+                                            </span>
+                                        </a>
+                                    );
+                                })}
+
                                 <button className="arrow-btn" onClick={() => handleNavigation("next")}>
                                     <RiArrowRightLine className="w-6 h-6" />
                                 </button>
