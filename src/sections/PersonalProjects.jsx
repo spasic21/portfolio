@@ -1,6 +1,6 @@
 import {personalProjects} from "../constants/index.js";
 import {useState} from "react";
-import {RiArrowLeftLine, RiArrowRightLine, RiArrowRightUpLine} from "react-icons/ri";
+import {RiArrowLeftLine, RiArrowRightLine} from "react-icons/ri";
 import Slideshow from "../components/Slideshow.jsx";
 
 const projectCount = personalProjects.length;
@@ -46,7 +46,8 @@ const PersonalProjects = () => {
                                 </button>
 
                                 {currentProject.navLinks.map(({icon: Icon, href}, index) => {
-                                    const toolTip = href.includes(".com") ? "Checkout Github Repo!" : "Checkout Live Site!";
+                                    let toolTip = href.includes(".com") ? "Checkout Github Repo!" : "Checkout Live Site!";
+                                    toolTip = href.includes(".jar") ? "Download Jar File!" : toolTip;
 
                                     return (
                                         <a

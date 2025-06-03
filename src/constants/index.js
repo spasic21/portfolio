@@ -1,17 +1,15 @@
-import {BiLogoJava, BiLogoSpringBoot, BiLogoHtml5, BiLogoJavascript, BiLogoCss3, BiLogoReact, BiLogoTailwindCss} from "react-icons/bi";
-import {RiMusic2Line, RiGithubFill} from "react-icons/ri";
 import {
-    java,
-    springboot,
-    html,
-    javascript,
-    css,
-    react,
-    tailwindcss,
-    threejs,
-    git,
-    docker
-} from "../assets";
+    BiLogoCss3,
+    BiLogoHtml5,
+    BiLogoJava,
+    BiLogoJavascript,
+    BiLogoReact,
+    BiLogoSpringBoot,
+    BiLogoTailwindCss
+} from "react-icons/bi";
+import {RiGithubFill, RiMusic2Line} from "react-icons/ri";
+import {CgPokemon} from "react-icons/cg";
+import {css, docker, git, html, java, javascript, react, springboot, tailwindcss, threejs} from "../assets";
 
 import pokemonGameGif1 from "../assets/pokemonGameGif1.mp4";
 import pokemonGameGif2 from "../assets/pokemonGameGif2.mp4";
@@ -71,6 +69,7 @@ export const personalProjects = [
             'This project showcases object-oriented design, custom game loop implementation, and Java GUI programming',
         navLinks: [
             {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonClone'},
+            {icon: CgPokemon, href: 'https://github.com/spasic21/PokemonClone/releases/download/v1.0/PokemonClone.jar'}
         ],
         logo: luffyGameboy,
         tech: [
