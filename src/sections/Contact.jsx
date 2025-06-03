@@ -1,6 +1,6 @@
 import {useRef, useState} from "react";
 import emailjs from '@emailjs/browser';
-import upArrow from "../assets/arrow-up.png";
+import {RiArrowRightUpLine} from "react-icons/ri";
 
 const Contact = () => {
 
@@ -107,7 +107,7 @@ const Contact = () => {
 
                         <button className="field-btn" type="submit" disabled={loading}>
                             {loading ? 'Sending...' : 'Send Message'}
-                            <img src={upArrow} alt="arrow-up" className="field-btn_arrow"/>
+                            <RiArrowRightUpLine className="field-btn_arrow"/>
                         </button>
                     </form>
                 </div>

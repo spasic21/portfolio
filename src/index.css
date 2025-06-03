@@ -83,11 +83,11 @@ body {
   }
 
   .arrow-btn {
-    @apply w-10 h-10 p-3 cursor-pointer active:scale-95 transition-all rounded-full arrow-gradient;
+    @apply p-3 cursor-pointer active:scale-95 transition-all rounded-full arrow-gradient;
   }
 
   .tech-logo {
-    @apply w-10 h-10 rounded-md p-2 bg-neutral-100 bg-opacity-10 backdrop-filter backdrop-blur-lg flex justify-center items-center;
+    @apply w-12 h-12 rounded-md p-2 bg-neutral-100 bg-opacity-10 backdrop-filter backdrop-blur-lg flex justify-center items-center;
   }
 
   /*  work experience section */
@@ -133,7 +133,7 @@ body {
   }
 
   .field-btn_arrow {
-    @apply w-2.5 h-2.5 object-contain invert brightness-0;
+    @apply w-6 h-6 object-contain invert brightness-0;
   }
 
   /*  footer */

@@ -1,8 +1,6 @@
 import {useState} from "react";
-import {navLinks} from "../constants/index.js";
-import close from "../assets/close.svg";
-import menu from "../assets/menu.svg";
-import github from "../assets/github.svg";
+import {navLinks} from "../constants/index";
+import {RiCloseLine, RiGithubFill, RiLinkedinFill, RiMenuFill} from "react-icons/ri";
 
 const NavItems = () => {
     return (
@@ -28,16 +26,31 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="flex items-center justify-between py-5 mx-auto c-space">
                     <div className="flex items-center gap-5">
-                        <a href="/portfolio/" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
+                        <a href="/portfolio" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
                             Aleksandar
                         </a>
-                        <a href="https://github.com/spasic21" target="_blank" rel="noreferrer">
-                            <img src={github} alt="github" className="w-10 h-10" />
+                        <a href="https://github.com/spasic21" target="_blank" rel="noreferrer" className="group relative">
+                            <div className="w-10 h-10">
+                                <RiGithubFill className="w-full h-full text-white" />
+                            </div>
+
+                            <span className="absolute top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-gray-800 text-white text-xs px-2 py-1 rounded z-10 whitespace-nowrap">
+                                GitHub Profile
+                            </span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aleksandar-spasic-628094a6" target="_blank" rel="noreferrer" className="group relative">
+                            <div className="w-10 h-10">
+                                <RiLinkedinFill className="w-full h-full text-white" />
+                            </div>
+
+                            <span className="absolute top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-gray-800 text-white text-xs px-2 py-1 rounded z-10 whitespace-nowrap">
+                                LinkedIn Profile
+                            </span>
                         </a>
                     </div>
 
                     <button onClick={toggleMenu} className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex">
-                        <img src={isOpen ? close : menu} alt="toggle" className="w-6 h-6" />
+                        {isOpen ? <RiCloseLine className="w-6 h-6" /> : <RiMenuFill className="w-6 h-6" />}
                     </button>
 
                     <nav className="sm:flex hidden">

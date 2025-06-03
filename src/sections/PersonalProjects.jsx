@@ -1,8 +1,6 @@
 import {personalProjects} from "../constants/index.js";
 import {useState} from "react";
-import leftArrow from "../assets/left-arrow.png";
-import upArrow from "../assets/arrow-up.png";
-import rightArrow from "../assets/right-arrow.png";
+import {RiArrowLeftLine, RiArrowRightLine, RiArrowRightUpLine} from "react-icons/ri";
 import Slideshow from "../components/Slideshow.jsx";
 
 const projectCount = personalProjects.length;
@@ -28,9 +26,15 @@ const PersonalProjects = () => {
 
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 mt-12">
                     <div className="grid-container h-[28rem] min-h-[28rem] flex flex-col">
-                        <div className="flex flex-row justify-between items-center text-white-600 my-5">
-                            <p className="text-white text-2xl font-semibold">{currentProject.title}</p>
-                            <img src={currentProject.logo} alt="logo" className="w-32 h-32 rounded-full" />
+                        <div className="flex flex-row justify-between items-center text-white-600 my-2">
+                            <p className="text-white text-2xl font-semibold mb-2">{currentProject.title}</p>
+                            <img src={currentProject.logo} alt="logo" className="w-24 h-24 rounded-full" />
+                        </div>
+
+                        <div className="flex flex-row gap-2">
+                            {currentProject.tech.map((Icon, index) => (
+                                <Icon key={index} className="tech-logo"/>
+                            ))}
                         </div>
 
                         <p className="text-white-600 text-lg">{currentProject.description}</p>
@@ -38,14 +42,14 @@ const PersonalProjects = () => {
                         <div className="mt-auto">
                             <div className="flex justify-between items-center">
                                 <button className="arrow-btn" onClick={() => handleNavigation("previous")}>
-                                    <img src={leftArrow} alt="left arrow" className="w-4 h-4" />
+                                    <RiArrowLeftLine className="w-6 h-6" />
                                 </button>
                                 <a className="flex items-center gap-2 cursor-pointer text-white-600" href={currentProject.href} target="_blank" rel="noreferrer">
                                     <p>Check Out Project</p>
-                                    <img src={upArrow} alt="arrow" className="w-3 h-3" />
+                                    <RiArrowRightUpLine className="w-6 h-6 text-white-600" />
                                 </a>
                                 <button className="arrow-btn" onClick={() => handleNavigation("next")}>
-                                    <img src={rightArrow} alt="right arrow" className="w-4 h-4" />
+                                    <RiArrowRightLine className="w-6 h-6" />
                                 </button>
                             </div>
                         </div>

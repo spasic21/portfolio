@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
-import leftArrow from "../assets/left-arrow.png";
-import rightArrow from "../assets/right-arrow.png";
+import {RiArrowLeftLine, RiArrowRightLine} from "react-icons/ri";
 
 const Slideshow = ({ images }) => {
 
@@ -72,13 +71,13 @@ const Slideshow = ({ images }) => {
                 className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
                 onClick={goToPrevious}
             >
-                <img src={leftArrow} alt="Previous" className="w-4 h-4" />
+                <RiArrowLeftLine className="w-6 h-6" />
             </button>
             <button
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
                 onClick={goToNext}
             >
-                <img src={rightArrow} alt="Next" className="w-4 h-4" />
+                <RiArrowRightLine className="w-6 h-6" />
             </button>
 
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">

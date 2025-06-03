@@ -4,6 +4,7 @@ import html from "../assets/tech/html.png";
 import javascript from "../assets/tech/javascript.png";
 import css from "../assets/tech/css.png";
 import react from "../assets/tech/react.png";
+import tailwindcss from "../assets/tech/tailwindcss.png";
 import threejs from "../assets/tech/threejs.png";
 import git from "../assets/tech/git.png";
 import docker from "../assets/tech/docker.png";
@@ -15,6 +16,7 @@ export {
     javascript,
     css,
     react,
+    tailwindcss,
     threejs,
     git,
     docker

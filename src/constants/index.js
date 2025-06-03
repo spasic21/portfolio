@@ -1,3 +1,4 @@
+import {BiLogoJava, BiLogoSpringBoot, BiLogoHtml5, BiLogoJavascript, BiLogoCss3, BiLogoReact, BiLogoTailwindCss} from "react-icons/bi";
 import {
     java,
     springboot,
@@ -5,6 +6,7 @@ import {
     javascript,
     css,
     react,
+    tailwindcss,
     threejs,
     git,
     docker
@@ -68,6 +70,9 @@ export const personalProjects = [
             'This project showcases object-oriented design, custom game loop implementation, and Java GUI programming',
         href: 'https://github.com/spasic21/PokemonClone',
         logo: luffyGameboy,
+        tech: [
+            BiLogoJava
+        ],
         images: [
             pokemonGameGif1,
             pokemonGameGif2,
@@ -81,6 +86,10 @@ export const personalProjects = [
             'Designed with scalability and ease of use in mind, this API helps me while developing my Pokemon clone game by providing reliable and structured data access.',
         href: 'https://github.com/spasic21/PokemonApi',
         logo: luffyPokeball,
+        tech: [
+            BiLogoJava,
+            BiLogoSpringBoot
+        ],
         images: [
             pokemonApiImage1,
             pokemonApiImage2,
@@ -94,6 +103,13 @@ export const personalProjects = [
             'The app features smooth UI interactions, genre filtering, and playback controls. All wrapped in a modern, clean design.',
         href: 'https://github.com/spasic21/spotify-clone',
         logo: luffyMusic,
+        tech: [
+            BiLogoHtml5,
+            BiLogoJavascript,
+            BiLogoCss3,
+            BiLogoReact,
+            BiLogoTailwindCss
+        ],
         images: [
             spotifyCloneImage1,
             spotifyCloneImage2,
@@ -174,6 +190,10 @@ export const technologies = [
     {
         name: "React",
         icon: react
+    },
+    {
+        name: "Tailwind CSS",
+        icon: tailwindcss
     },
     {
         name: "Three",
