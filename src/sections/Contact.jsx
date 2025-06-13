@@ -1,11 +1,16 @@
-import {useRef, useState} from "react";
+import {Suspense, useRef, useState} from "react";
 import emailjs from '@emailjs/browser';
 import {RiArrowRightUpLine} from "react-icons/ri";
+import {Canvas} from "@react-three/fiber";
+import {OrbitControls} from "@react-three/drei";
+import CanvasLoader from "../components/CanvasLoader.jsx";
+import Avatar from "../components/Avatar.jsx";
 
 const Contact = () => {
 
     const formRef = useRef();
     const [loading, setLoading] = useState(false);
+    const [animationName, setAnimationName] = useState("idle");
 
     const [form, setForm] = useState({
         name: '',
@@ -55,12 +60,9 @@ const Contact = () => {
 
     return (
         <section className="c-space my-20 scroll-mt-20" id="contact">
-            <div className="relative min-h-96 flex items-center flex-col">
-                <div className="">
+            <div className="min-h-96 grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
+                <div>
                     <h3 className="head-text">Contact Me</h3>
-                    <p className="sub-text">
-                        Hello
-                    </p>
                     <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
                         <label className="space-y-3">
                             <span className="field-label">
@@ -71,9 +73,12 @@ const Contact = () => {
                                 name="name"
                                 value={form.name}
                                 onChange={handleChange}
+                                onPointerOver={() => setAnimationName('clapping')}
+                                onFocus={() => setAnimationName('clapping')}
+                                onPointerOut={() => setAnimationName('idle')}
                                 required
                                 className="field-input"
-                                placeholder="John Doe"
+                                placeholder="Aleksandar Spasic"
                             />
                         </label>
                         <label className="space-y-3">
@@ -85,9 +90,12 @@ const Contact = () => {
                                 name="email"
                                 value={form.email}
                                 onChange={handleChange}
+                                onPointerOver={() => setAnimationName('cheering')}
+                                onFocus={() => setAnimationName('cheering')}
+                                onPointerOut={() => setAnimationName('idle')}
                                 required
                                 className="field-input"
-                                placeholder="johndoe@gmail.com"
+                                placeholder="aspasic21@gmail.com"
                             />
                         </label>
                         <label className="space-y-3">
@@ -98,6 +106,9 @@ const Contact = () => {
                                 name="message"
                                 value={form.message}
                                 onChange={handleChange}
+                                onPointerOver={() => setAnimationName('dancing')}
+                                onFocus={() => setAnimationName('dancing')}
+                                onPointerOut={() => setAnimationName('idle')}
                                 required
                                 rows={5}
                                 className="field-input"
@@ -105,11 +116,29 @@ const Contact = () => {
                             />
                         </label>
 
-                        <button className="field-btn" type="submit" disabled={loading}>
+                        <button
+                            className="field-btn"
+                            type="submit"
+                            disabled={loading}
+                            onPointerOver={() => setAnimationName('salute')}
+                            onPointerOut={() => setAnimationName('idle')}
+                        >
                             {loading ? 'Sending...' : 'Send Message'}
                             <RiArrowRightUpLine className="field-btn_arrow"/>
                         </button>
                     </form>
+                </div>
+
+                <div className="work-canvas">
+                    <Canvas>
+                        <ambientLight intensity={7} />
+                        <spotLight position={[10, 10, 10]} angle={0.15} penubra={1} />
+                        <directionalLight position={[10, 10, 10]} intensity={1} />
+                        <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+                        <Suspense fallback={<CanvasLoader />}>
+                            <Avatar position-y={-2} scale={2} animationName={animationName}/>
+                        </Suspense>
+                    </Canvas>
                 </div>
             </div>
 
