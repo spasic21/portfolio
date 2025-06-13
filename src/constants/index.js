@@ -7,9 +7,14 @@ import {
     BiLogoSpringBoot,
     BiLogoTailwindCss
 } from "react-icons/bi";
+
 import {RiGithubFill, RiMusic2Line} from "react-icons/ri";
 import {CgPokemon} from "react-icons/cg";
 import {css, docker, git, html, java, javascript, react, springboot, tailwindcss, threejs} from "../assets";
+
+import creativity from "../assets/creativity.svg";
+import strategy from "../assets/strategy.svg";
+import code from "../assets/code.svg";
 
 import pokemonGameGif1 from "../assets/pokemonGameGif1.mp4";
 import pokemonGameGif2 from "../assets/pokemonGameGif2.mp4";
@@ -40,33 +45,39 @@ export const navLinks = [
     },
     {
         id: 2,
-        name: 'About',
-        href: '#about',
-    },
-    {
-        id: 3,
         name: 'Projects',
         href: '#projects',
     },
     {
-        id: 4,
+        id: 3,
         name: 'Work',
         href: '#work',
     },
     {
-        id: 5,
+        id: 4,
         name: 'Contact',
         href: '#contact',
     },
 ];
 
+export const heroWords = [
+    {text: 'Creativity', imgPath: creativity},
+    {text: 'Strategy', imgPath: strategy},
+    {text: 'Code', imgPath: code},
+    {text: 'Creativity', imgPath: creativity},
+    {text: 'Strategy', imgPath: strategy},
+    {text: 'Code', imgPath: code},
+    {text: 'Creativity', imgPath: creativity},
+    {text: 'Strategy', imgPath: strategy},
+    {text: 'Code', imgPath: code}
+];
+
 export const personalProjects = [
     {
         title: 'Java Pokemon Game (Ongoing)',
-        description: 'A turn-based RPG game built entirely in Java that mimics the core mechanics of traditional Pokémon games. ' +
-            'Players can select a Pokemon, battle AI-controlled enemies, use various moves, and manage health stats during combat. ' +
-            'The game includes basic sprite rendering, type-based attacks, a simple UI, and turn logic, all developed without external game engines. ' +
-            'This project showcases object-oriented design, custom game loop implementation, and Java GUI programming',
+        description: 'A Java turn-based RPG inspired by classic Pokémon mechanics. ' +
+            'Features include AI battles, type-based attacks, health management, and a custom game loop. All built without external engines. ' +
+            'Demonstrates strong object-oriented design and Java GUI development. Instructions are on GitHub.',
         navLinks: [
             {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonClone'},
             {icon: CgPokemon, href: 'https://github.com/spasic21/PokemonClone/releases/download/v1.0/PokemonClone.jar'}
@@ -83,9 +94,8 @@ export const personalProjects = [
     },
     {
         title: 'Pokemon API',
-        description: 'RESTful API using Java and Spring Boot to serve detailed Pokemon data essential for a turn-based RPG game clone. ' +
-            'The API efficiently organizes Pokemon stats and attributes, enabling retrieval by Pokedex number or within specified ranges (1-251). ' +
-            'Designed with scalability and ease of use in mind, this API helps me while developing my Pokemon clone game by providing reliable and structured data access.',
+        description: 'Developed a RESTful API with Java and Spring Boot to serve structured Pokémon data for the Pokemon game I created. ' +
+            'Supports efficient retrieval by Pokédex number or range (1–251), showcasing scalable design and clean data access to power game logic.',
         navLinks: [
             {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonApi'}
         ],
@@ -101,10 +111,9 @@ export const personalProjects = [
         ]
     },
     {
-        title: 'Spotify Clone App',
-        description: 'Spotify-inspired music player using React, Tailwind CSS, and Redux for state management. ' +
-            'It integrates with a lightweight proxy server that I made that communicates with Deezer API to fetch songs and play previews, allowing users to browse, play, and control tracks just like a real music app. ' +
-            'The app features smooth UI interactions, genre filtering, and playback controls. All wrapped in a modern, clean design.',
+        title: 'Music Player App',
+        description: 'Built a Spotify-style music player using React, Tailwind CSS, and Redux, integrated with a custom proxy server to fetch and stream music from the Deezer API. ' +
+            'Features include track browsing, genre filtering, and responsive playback controls in a sleek, modern UI.',
         navLinks: [
             {icon: RiGithubFill, href: 'https://github.com/spasic21/react-music-app'},
             {icon: RiMusic2Line, href: 'https://spasic21.github.io/react-music-app/'}

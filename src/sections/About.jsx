@@ -26,18 +26,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="col-span-2 xl:row-span-1">
-                    <div className="grid-container">
-                        <div>
-                            <p className="grid-headtext">
-                                Tech Stack
-                            </p>
-                            <TechStack/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="xl:col-span-3 md:col-span-2 xl:row-span-1">
+                <div className="xl:col-span-2 md:col-span-1 xl:row-span-1">
                     <div className="grid-container">
                         <img src={grid3} alt="grid-3" className="w-full sm:h-[276px] h-fit object-contain"/>
                         <p className="grid-headtext">
@@ -52,6 +41,17 @@ const About = () => {
                             software that meets business needs. Looking forward to joining a team that is passionate about
                             creating innovative solutions.
                         </p>
+                    </div>
+                </div>
+
+                <div className="col-span-3 xl:row-span-1">
+                    <div className="grid-container">
+                        <div>
+                            <p className="grid-headtext">
+                                Tech Stack
+                            </p>
+                            <TechStack/>
+                        </div>
                     </div>
                 </div>
             </div>

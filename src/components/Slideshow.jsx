@@ -42,8 +42,8 @@ const Slideshow = ({ images }) => {
     const isVideo = path => path.toLowerCase().endsWith('.mp4');
 
     return (
-        <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full relative">
-            <div className="w-full h-full overflow-hidden rounded-lg flex justify-center items-center">
+        <div className="border border-black-300 bg-black-200 rounded-3xl h-96 md:h-full relative">
+            <div className="w-full h-full overflow-hidden rounded-lg flex justify-center items-center p-5">
                 {isVideo(images[currentIndex]) ? (
                     <video
                         className="w-full h-[36rem] object-contain"

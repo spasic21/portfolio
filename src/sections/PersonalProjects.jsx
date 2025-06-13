@@ -72,9 +72,8 @@ const PersonalProjects = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
-                        <Slideshow images={currentProject.images} />
-                    </div>
+
+                    <Slideshow images={currentProject.images} />
                 </div>
             </div>
         </section>
