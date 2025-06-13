@@ -25,7 +25,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="c-space my-20" id="home">
+        <section className="c-space my-20 scroll-mt-20" id="home">
             <div className="relative gap-5 w-full h-full">
                 <div className="aspect-video rounded-3xl overflow-hidden relative">
                     <video className="w-full h-full object-cover" autoPlay loop muted>

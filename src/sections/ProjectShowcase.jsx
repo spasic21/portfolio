@@ -6,7 +6,7 @@ const ProjectShowcase = () => {
     const containerRef = useRef(null);
 
     return (
-        <section className="c-space my-20" id="projects">
+        <section className="c-space my-20 scroll-mt-20" id="projects">
             <div className="w-full text-white-600">
                 <h3 className="head-text">Project Showcase</h3>
 

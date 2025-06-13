@@ -5,7 +5,7 @@ import grid3 from "../assets/grid3.png";
 
 const About = () => {
     return (
-        <section className="c-space my-20" id="about">
+        <section className="c-space my-20 scroll-mt-20" id="about">
             <div className="grid xl:grid-cols-3 xl:grid-rows-2 md:grid-cols-2 grid-cols-1 gap-5 h-full">
                 <div className="col-span-1 xl:row-span-1">
                     <div className="grid-container">

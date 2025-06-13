@@ -54,7 +54,7 @@ const Contact = () => {
     }
 
     return (
-        <section className="c-space my-20" id="contact">
+        <section className="c-space my-20 scroll-mt-20" id="contact">
             <div className="relative min-h-96 flex items-center flex-col">
                 <div className="">
                     <h3 className="head-text">Contact Me</h3>
