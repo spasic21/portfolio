@@ -55,6 +55,11 @@ export const navLinks = [
     },
     {
         id: 4,
+        name: 'Tech',
+        href: '#tech',
+    },
+    {
+        id: 5,
         name: 'Contact',
         href: '#contact',
     },
@@ -140,45 +145,59 @@ export const workExperiences = [
         name: 'Old Dominion Freight Line',
         position: 'Associate Software Engineer',
         duration: 'December 2022 – Present',
-        title: "Developed a Java and SQL-based UI and web service for driver projections, improving trailer time estimation.",
+        responsibilities: [
+            "Developed a Java and SQL-based UI and web service for freight line information and route projections, improving trailer time estimation.",
+            "Led migration from Subversion to GitLab, implementing CI/CD pipelines to enhance deployment speed.",
+            "Optimized back-end services, increasing system reliability and reducing downtime."
+        ],
         icon: oldDominionFreightLineLogo,
-        animation: 'clapping',
     },
     {
         id: 2,
         name: 'Best Buy',
         position: 'Software Engineer (Java & Spring Boot)',
         duration: 'May 2022 - November 2022',
-        title: 'Built Spring Boot APIs for Amazon S3 data handling, integrating robust JUnit and Groovy tests for functionality validation.',
+        responsibilities: [
+            "Developed and maintained RESTful APIs using Java and Spring Boot to streamline data access from Amazon S3, increasing data reliability and operational efficiency.",
+            "Led the migration of source code repositories from Bitbucket to GitHub, significantly improving version control workflows and cross-team collaboration.",
+            "Collaborated within a cross-functional Agile team to deliver high-quality solutions on schedule, actively participating in sprint planning, code reviews, and daily stand-ups."
+        ],
         icon: bestBuyLogo,
-        animation: 'swimming'
     },
     {
         id: 3,
         name: 'Marriott Vacations Worldwide',
         position: 'Back-End Java Developer',
         duration: 'April 2021 - April 2022',
-        title: 'Developed Spring Boot REST APIs for seamless integration with React and mobile apps.',
+        responsibilities: [
+            "Developed Spring Boot REST APIs for seamless integration with React and mobile apps.",
+            "Streamlined CMS operations with Jahia, improving front-end data presentation.",
+            "Contributed to front-end updates on Vistana’s WordPress platform."
+        ],
         icon: marriottVacationsWorldwideLogo,
-        animation: 'cheering'
     },
     {
         id: 4,
         name: 'Andersen Windows',
         position: 'Software Engineer',
         duration: 'October 2019 - March 2020',
-        title: 'Modernized legacy processes by replacing Excel macros with a Java Spring Boot application.',
+        responsibilities: [
+            "Modernized legacy processes by replacing Excel macros with a Java Spring Boot application.",
+            "Implemented Hibernate for efficient data retrieval, improving performance and accuracy."
+        ],
         icon: andersenWindowsLogo,
-        animation: 'dancing'
     },
     {
         id: 5,
         name: 'Express Scripts',
         position: 'Back-End Java Developer',
         duration: 'December 2018 - June 2019',
-        title: 'Redesigned Spring Boot REST APIs for the customer rebate application, improving performance.',
+        responsibilities: [
+            "Redesigned Spring Boot REST APIs for the customer rebate application, improving performance.",
+            "Optimized data processing using Hibernate for complex Oracle SQL queries.",
+            "Strengthened code reliability with JUnit and Mockito unit testing."
+        ],
         icon: expressScriptsLogo,
-        animation: 'salute'
     }
 ];
 
@@ -224,3 +243,30 @@ export const technologies = [
         icon: docker
     }
 ];
+
+export const techStackIcons = [
+    {
+        name: "Java Developer",
+        modelPath: "models/java.glb",
+        scale: 1.5,
+        rotation: [0, 0, 0]
+    },
+    {
+        name: "React Developer",
+        modelPath: "models/react.glb",
+        scale: 1,
+        rotation: [0, 0, 0]
+    },
+    {
+        name: "Interactive Developer",
+        modelPath: "models/three_js.glb",
+        scale: 0.05,
+        rotation: [0, 0, 0]
+    },
+    {
+        name: "Project Manager",
+        modelPath: "models/git.glb",
+        scale: 3,
+        rotation: [0, 0, 0]
+    },
+]

@@ -12,10 +12,6 @@ body {
     font-family: 'General Sans', sans-serif;
 }
 
-@theme {
-    --color-white-50: #d9ecff;
-}
-
 @layer utilities {
     .c-space {
         @apply sm:px-10 px-5;
@@ -157,7 +153,7 @@ body {
     }
 
     .work-canvas {
-        @apply col-span-1 rounded-lg bg-black-200 border border-black-300;
+        @apply col-span-1 rounded-3xl bg-black-200 border border-black-300;
     }
 
     .work-content {
@@ -210,5 +206,17 @@ body {
             rgba(255, 255, 255, 0.000025) 50%,
             rgba(255, 255, 255, 0.000025) 50%,
             rgba(255, 255, 255, 0.025) 100%
+    );
+}
+
+.gradient-line {
+    width: 2px;
+    background: linear-gradient(
+        0deg,
+        rgba(69, 222, 196, 0) 0%,
+        #62e0ff 25%,
+        #52aeff 37.51%,
+        #fd5c79 62.83%,
+        #6d45ce 92.91%
     );
 }

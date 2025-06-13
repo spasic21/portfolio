@@ -14,6 +14,7 @@ export default {
           300: '#1C1C21',
           500: '#3A3A49',
           600: '#1A1A1A',
+          50: '#1c1c21'
         },
         white: {
           DEFAULT: '#FFFFFF',
@@ -21,6 +22,7 @@ export default {
           700: '#D6D9E9',
           600: '#AFB0B6',
           500: '#62646C',
+          50: '#d9ecff'
         },
       },
 
