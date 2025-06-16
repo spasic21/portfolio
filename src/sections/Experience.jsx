@@ -8,18 +8,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
     useGSAP(() => {
-        gsap.utils.toArray(".workText").forEach((text) => {
-            gsap.from(text, {
-                opacity: 0,
-                xPercent: 100,
-                duration: 1,
-                ease:"power2.inOut",
-                scrollTrigger: {
-                    trigger: text,
-                    start: "top 60%"
-                }
-            })
-        }, "<");
+        if(window.innerWidth > 768) {
+            gsap.utils.toArray(".workText").forEach((text) => {
+                gsap.from(text, {
+                    opacity: 0,
+                    xPercent: 100,
+                    duration: 1,
+                    ease:"power2.inOut",
+                    scrollTrigger: {
+                        trigger: text,
+                        start: "top 60%"
+                    }
+                })
+            }, "<");
+        }
     }, []);
 
     return (
