@@ -248,7 +248,7 @@ export const techStackIcons = [
     {
         name: "Java Developer",
         modelPath: "models/java.glb",
-        scale: 1.5,
+        scale: 1.2,
         rotation: [0, 0, 0]
     },
     {
@@ -266,7 +266,7 @@ export const techStackIcons = [
     {
         name: "Project Manager",
         modelPath: "models/git.glb",
-        scale: 3,
+        scale: 2.8,
         rotation: [0, 0, 0]
     },
 ]
