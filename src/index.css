@@ -26,7 +26,7 @@ body {
     }
 
     .nav-ul {
-        @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
+        @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-40;
     }
 
     .nav-li {

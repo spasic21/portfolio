@@ -103,7 +103,7 @@ const Hero = () => {
                                     ref={profileRef}
                                     src={profilePic}
                                     alt="profile-pic"
-                                    className={`rounded-full object-contain cursor-pointer z-50 ${isZoomed ? 
+                                    className={`rounded-full object-contain cursor-pointer z-20 ${isZoomed ? 
                                         "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] xl:w-[60vw] xl:h-[60vw] 2xl:w-[40vw] 2xl:h-[40vw] 3xl:w-[30vw] 3xl:h-[30vw]" 
                                         : "size-16 md:size-64"}`}
                                     onClick={toggleZoom}
@@ -126,7 +126,7 @@ const Hero = () => {
             </section>
 
             {isZoomed && (
-                <div className="fixed inset-0 z-40 bg-black/80" onClick={toggleZoom}/>
+                <div className="fixed inset-0 z-10 bg-black/80" onClick={toggleZoom}/>
             )}
         </>
     );
