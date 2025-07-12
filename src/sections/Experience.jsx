@@ -38,7 +38,7 @@ const Experience = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default Experience;

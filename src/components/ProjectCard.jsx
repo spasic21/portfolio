@@ -104,15 +104,16 @@ const ProjectCard = ({project, index, containerRef}) => {
 
             <div
                 ref={(el) => (contentRefs.current[index] = el)}
-                className={`flex-1 p-4 text-sm text-white ${expandedIndex === index ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none absolute z-0'}`}
+                className={`flex-1 p-4 text-sm ${expandedIndex === index ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none absolute z-0'}`}
             >
-                {/*<h2 className="text-xl font-semibold ml-5 mb-5">{project.title}</h2>*/}
                 <div className="flex flex-row gap-2 my-5">
                     {project.tech.map((Icon, i) => (
                         <Icon key={i} className="tech-logo"/>
                     ))}
                 </div>
+
                 <p className="text-sm md:text-base">{project.description}</p>
+
                 <div className="flex flex-row justify-center gap-40 py-2">
                     {project.navLinks.map(({icon: Icon, href}, i) => {
                         let toolTip = href.includes(".com") ? "Checkout Github Repo!" : "Checkout Live Site!";

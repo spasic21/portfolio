@@ -1,14 +1,12 @@
 import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from 'tailwindcss'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig(({mode}) => ({
-    css: {
-        postcss: {
-            plugins: [tailwindcss()],
-        }
-    },
-    plugins: [react()],
+    plugins: [
+        react(),
+        tailwindcss()
+    ],
     base: mode === 'development' ? '/' : '/portfolio/'
 }));

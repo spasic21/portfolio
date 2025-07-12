@@ -8,14 +8,14 @@ import TechStack from "./sections/TechStack.jsx";
 const App = () => {
     return (
         <main className="max-w-screen-2xl mx-auto">
-            <Navbar />
-            <Hero />
-            <ProjectShowcase />
-            <Experience />
+            <Navbar/>
+            <Hero/>
+            <ProjectShowcase/>
+            <Experience/>
             <TechStack/>
-            <Contact />
+            <Contact/>
         </main>
     );
-}
+};
 
 export default App;

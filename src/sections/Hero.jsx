@@ -10,7 +10,6 @@ gsap.registerPlugin(Flip);
 
 const Hero = () => {
     const [isZoomed, setIsZoomed] = useState(false);
-    const [flipState, setFlipState] = useState(null);
     const profileRef = useRef(null);
 
     useGSAP(() => {
@@ -32,36 +31,43 @@ const Hero = () => {
         }
     }, []);
 
-    useGSAP(() => {
-        if(!flipState) return;
-
-        Flip.from(flipState, {
-            duration: 0.6,
-            ease: "power2.inOut",
-            absolute: true,
-            onEnter: (el) => {
-                el.style.position = "fixed";
-                el.style.top = "50%";
-                el.style.left = "50%";
-                el.style.transform = "translate(-50%, -50%)";
-            },
-            onLeave: (el) => {
-                el.style.position = "";
-                el.style.top = "";
-                el.style.left = "";
-                el.style.transform = "";
-            }
-        });
-
-        setFlipState(null);
-    }, [flipState]);
-
     const toggleZoom = () => {
-        const state = Flip.getState(profileRef.current);
+        const element = profileRef.current;
 
-        setFlipState(state);
-        setIsZoomed((prev) => !prev);
+        const flip = Flip.getState(element);
+
+        if (!isZoomed) {
+            // Zoom in
+            gsap.set(element, {
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                xPercent: -50,
+                yPercent: -50,
+                width: "1000px",
+                height: "1000px",
+                zIndex: 50,
+            });
+
+            Flip.from(flip, {
+                duration: 0.6,
+                ease: "power2.inOut",
+                absolute: true,
+            });
+        } else {
+            // Zoom out
+            gsap.set(element, { clearProps: "all" });
+
+            Flip.from(flip, {
+                duration: 0.6,
+                ease: "power2.inOut",
+                absolute: true,
+            });
+        }
+
+        setIsZoomed(prev => !prev);
     };
+
 
     return (
         <>
@@ -103,9 +109,7 @@ const Hero = () => {
                                     ref={profileRef}
                                     src={profilePic}
                                     alt="profile-pic"
-                                    className={`rounded-full object-contain cursor-pointer z-20 ${isZoomed ? 
-                                        "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] xl:w-[60vw] xl:h-[60vw] 2xl:w-[40vw] 2xl:h-[40vw] 3xl:w-[30vw] 3xl:h-[30vw]" 
-                                        : "size-16 md:size-64"}`}
+                                    className="rounded-full object-contain size-16 md:size-64 cursor-pointer z-20"
                                     onClick={toggleZoom}
                                 />
 
