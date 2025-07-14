@@ -1,4 +1,4 @@
-import {Suspense, useRef, useState} from "react";
+import {forwardRef, Suspense, useRef, useState} from "react";
 import emailjs from '@emailjs/browser';
 import {RiArrowRightUpLine} from "react-icons/ri";
 import {Canvas} from "@react-three/fiber";
@@ -6,8 +6,7 @@ import {OrbitControls} from "@react-three/drei";
 import CanvasLoader from "../components/CanvasLoader.jsx";
 import Avatar from "../components/Avatar.jsx";
 
-const Contact = () => {
-
+const Contact = forwardRef((props, ref) => {
     const formRef = useRef();
     const [loading, setLoading] = useState(false);
     const [animationName, setAnimationName] = useState("idle");
@@ -59,7 +58,7 @@ const Contact = () => {
     }
 
     return (
-        <section className="c-space my-20 scroll-mt-20" id="contact">
+        <section ref={ref} className="c-space my-20 scroll-mt-20">
             <div className="min-h-96 grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
                 <div>
                     <h3 className="head-text">Contact Me</h3>
@@ -141,9 +140,8 @@ const Contact = () => {
                     </Canvas>
                 </div>
             </div>
-
         </section>
     );
-};
+});
 
 export default Contact;

@@ -4,11 +4,11 @@ import Flip from "gsap/Flip";
 import video from "../assets/thousand_sunny.mp4";
 import profilePic from "../assets/profile-pic.jpg";
 import {heroWords} from "../constants/index";
-import {useRef, useState} from "react";
+import {forwardRef, useRef, useState} from "react";
 
 gsap.registerPlugin(Flip);
 
-const Hero = () => {
+const Hero = forwardRef((props, ref) => {
     const [isZoomed, setIsZoomed] = useState(false);
     const profileRef = useRef(null);
 
@@ -71,7 +71,7 @@ const Hero = () => {
 
     return (
         <>
-            <section className="c-space my-20 scroll-mt-20" id="home">
+            <section ref={ref} className="c-space my-20 scroll-mt-20">
                 <div className="relative gap-5 w-full h-full">
                     <div className="aspect-video relative">
                         <video className="w-full h-full rounded-3xl object-cover" autoPlay loop muted>
@@ -134,6 +134,6 @@ const Hero = () => {
             )}
         </>
     );
-};
+});
 
 export default Hero;

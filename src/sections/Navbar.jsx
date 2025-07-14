@@ -2,22 +2,22 @@ import {useState} from "react";
 import {navLinks} from "../constants/index";
 import {RiCloseLine, RiGithubFill, RiLinkedinFill, RiMenuFill} from "react-icons/ri";
 
-const NavItems = () => {
+const NavItems = ({onNavClick}) => {
     return (
-        <ul className="nav-ul">
-            {navLinks.map(({id, href, name}) => (
-                <li key={id} className="nav-li">
-                    <a href={href} className="nav-li_a group relative">
+        <ul className="navbar">
+            {navLinks.map(({id, name}) => (
+                <li key={id}>
+                    <button className="group" onClick={onNavClick[name]}>
                         <span>{name}</span>
-                        <span className="nav-li-underline"/>
-                    </a>
+                        <span className="underline"/>
+                    </button>
                 </li>
             ))}
         </ul>
     );
-}
+};
 
-const Navbar = () => {
+const Navbar = ({onNavClick}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => setIsOpen((prevState) => !prevState);
@@ -59,18 +59,18 @@ const Navbar = () => {
                     </button>
 
                     <nav className="sm:flex hidden">
-                        <NavItems />
+                        <NavItems onNavClick={onNavClick}/>
                     </nav>
                 </div>
             </div>
 
             <div className={`nav-sidebar ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
                 <nav className="p-5">
-                    <NavItems />
+                    <NavItems onNavClick={onNavClick}/>
                 </nav>
             </div>
         </header>
     );
-}
+};
 
 export default Navbar;

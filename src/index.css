@@ -22,37 +22,24 @@ body {
         @apply sm:text-4xl text-3xl font-semibold text-white;
     }
 
-    .nav-ul {
-        @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-40;
-    }
+    .navbar {
+        @apply flex flex-col items-center gap-2 sm:flex-row relative z-40;
 
-    .nav-li {
-        @apply text-neutral-400 hover:text-white hover:bg-black-500 sm:hover:bg-transparent sm:w-full sm:rounded-md py-2 sm:px-5;
-    }
+        li {
+            @apply text-neutral-400 hover:text-white hover:bg-black-500 sm:hover:bg-transparent sm:w-full sm:rounded-md py-2 sm:px-5;
+        }
 
-    .nav-li_a {
-        @apply text-lg md:text-base hover:text-white transition-colors;
-    }
+        button {
+            @apply relative text-lg md:text-base hover:text-white transition-colors cursor-pointer;
+        }
 
-    .nav-li-underline {
-        @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+        .underline {
+            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+        }
     }
 
     .nav-sidebar {
         @apply absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
-    }
-
-    /* button component */
-    .btn {
-        @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-black-300 transition-all active:scale-95 text-white mx-auto;
-    }
-
-    .btn-ping {
-        @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
-    }
-
-    .btn-ping_dot {
-        @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
     }
 
     /* hero section */

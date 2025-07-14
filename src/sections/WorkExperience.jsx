@@ -3,10 +3,11 @@ import WorkCard from "../components/WorkCard.jsx";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {forwardRef} from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Experience = () => {
+const WorkExperience = forwardRef((props, ref) => {
     useGSAP(() => {
         if(window.innerWidth > 768) {
             gsap.utils.toArray(".workText").forEach((text) => {
@@ -25,7 +26,7 @@ const Experience = () => {
     }, []);
 
     return (
-        <section className="c-space my-20 scroll-mt-20" id="work">
+        <section ref={ref} className="c-space my-20 scroll-mt-20">
             <div className="w-full text-white-600">
                 <h3 className="head-text">Work Experience</h3>
 
@@ -39,6 +40,6 @@ const Experience = () => {
             </div>
         </section>
     );
-};
+});
 
-export default Experience;
+export default WorkExperience;

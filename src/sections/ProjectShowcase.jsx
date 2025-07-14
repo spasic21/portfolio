@@ -1,12 +1,12 @@
-import {useRef} from "react";
+import {forwardRef, useRef} from "react";
 import {personalProjects} from "../constants/index";
 import ProjectCard from "../components/ProjectCard";
 
-const ProjectShowcase = () => {
+const ProjectShowcase = forwardRef((props, ref) => {
     const containerRef = useRef(null);
 
     return (
-        <section className="c-space my-20 scroll-mt-20" id="projects">
+        <section ref={ref} className="c-space my-20 scroll-mt-20">
             <div className="w-full text-white-600">
                 <h3 className="head-text">Project Showcase</h3>
 
@@ -19,6 +19,6 @@ const ProjectShowcase = () => {
             </div>
         </section>
     );
-};
+});
 
 export default ProjectShowcase;

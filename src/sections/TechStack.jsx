@@ -2,9 +2,9 @@ import {techStackIcons} from "../constants/index.js";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import TechIconCard from "../components/TechIconCard.jsx";
-import {useEffect, useState} from "react";
+import {forwardRef, useEffect, useState} from "react";
 
-const TechStack = () => {
+const TechStack = forwardRef((props, ref) => {
     const [isLargeScreen, setIsLargeScreen] = useState(false);
 
     useEffect(() => {
@@ -33,14 +33,13 @@ const TechStack = () => {
                 ease: "power2.inOut",
                 stagger: 0.2,
                 scrollTrigger: {
-                    trigger: "#tech",
                     start: "top center"
                 }
         });
     }, [isLargeScreen]);
 
     return (
-        <section className="c-space my-20 scroll-mt-20" id="tech">
+        <section ref={ref} className="c-space my-20 scroll-mt-20">
             <h3 className="head-text">Tech Stack</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-10 sm:py-10 py-5">
@@ -64,6 +63,6 @@ const TechStack = () => {
             </div>
         </section>
     );
-}
+});
 
 export default TechStack;
