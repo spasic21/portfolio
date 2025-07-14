@@ -1,111 +1,63 @@
-import gsap from "gsap";
 import ProjectImage from "./ProjectImage.jsx";
-import {useRef, useState} from "react";
+import gsap from "gsap";
+import Flip from "gsap/Flip";
+import {useGSAP} from "@gsap/react";
+import {useRef} from "react";
 
-const ProjectCard = ({project, index, containerRef}) => {
+gsap.registerPlugin(Flip);
+
+const ProjectCard = ({project, index, isExpanded, toggleExpand}) => {
     const cardRef = useRef(null);
-    const contentRefs = useRef([]);
-    const [expandedIndex, setExpandedIndex] = useState(null);
-    const originalRectRef = useRef(null);
+    const isMobile = window.innerWidth <= 768;
 
-    const handleClick = (index) => {
-        const card = cardRef.current;
-        const container = containerRef.current;
+    useGSAP(() => {
+        if (!cardRef.current) return;
 
-        if (expandedIndex === index) {
-            // Collapse
-            const rect = originalRectRef.current;
+        const element = cardRef.current;
+        const flip = Flip.getState(element);
 
-            gsap.to(contentRefs.current[index], {
-                opacity: 0,
-                duration: 0.3,
-                ease: 'power1.out',
-                onComplete: () => {
-                    contentRefs.current[index].style.pointerEvents = "none";
-                    contentRefs.current[index].style.position = "absolute";
-                    gsap.set(contentRefs.current[index], {zIndex: 0});
-                }
+        if (isExpanded) {
+            // Expand
+            gsap.set(element, {
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                xPercent: -50,
+                yPercent: -50,
+                width: isMobile ? "90vw" : "50vw",
+                height: "auto",
+                maxHeight: "90vh",
+                zIndex: 50
             });
 
-            gsap.to(card, {
-                top: rect.top,
-                left: rect.left,
-                width: rect.width,
-                height: rect.height,
-                duration: 0.5,
-                ease: 'power2.inOut',
-                onComplete: () => {
-                    gsap.set(card, {
-                        clearProps: 'all'
-                    });
-
-                    setExpandedIndex(null);
-                }
+            Flip.from(flip, {
+                duration: 0.6,
+                ease: "power2.inOut",
             });
         } else {
-            // Expand - Get coordinates
-            const boxRect = card.getBoundingClientRect();
-            const containerRect = container.getBoundingClientRect();
+            // Collapse
+            gsap.set(element, { clearProps: "all" });
 
-            const dx = boxRect.left - containerRect.left;
-            const dy = boxRect.top - containerRect.top;
-
-            originalRectRef.current = {
-                top: dy,
-                left: dx,
-                width: boxRect.width,
-                height: boxRect.height
-            };
-
-            gsap.set(card, {
-                position: 'absolute',
-                top: dy,
-                left: dx,
-                width: boxRect.width,
-                height: boxRect.height,
-                zIndex: 10,
+            Flip.from(flip, {
+                duration: 0.6,
+                ease: "power2.inOut",
             });
-
-            gsap.to(card, {
-                top: 0,
-                left: 0,
-                width: containerRect.width,
-                height: containerRect.height,
-                duration: 0.5,
-                ease: 'power2.inOut',
-                onStart: () => {
-                    contentRefs.current[index].style.pointerEvents = "auto";
-                    contentRefs.current[index].style.position = "relative";
-                },
-                onComplete: () => {
-                    gsap.fromTo(contentRefs.current[index],
-                        {opacity: 0, zIndex: 0},
-                        {opacity: 1, duration: 0.4, ease: 'power2.inOut'}
-                    );
-                }
-            });
-
-            setExpandedIndex(index);
         }
-    };
+    }, [isExpanded]);
 
     return (
         <div
             ref={cardRef}
-            onClick={() => handleClick(index)}
-            className={`relative flex-1 h-[300px] overflow-hidden bg-black-200 rounded-3xl cursor-pointer text-white flex items-center pb-6 ${expandedIndex === index ? 'flex-col md:flex-row' : 'flex-col'} `}
+            onClick={() => toggleExpand(index)}
+            className="relative flex-1 flex-col h-[300px] overflow-hidden bg-black-200 rounded-3xl cursor-pointer text-white flex items-center p-4"
         >
-            <div className={`flex flex-col ${expandedIndex === index ? 'w-full md:w-1/2' : 'w-full'} rounded-3xl`}>
-                <ProjectImage imageSrc={project.images[0]} projectTitle={project.title}
-                              className={`aspect-video object-cover rounded-3xl my-5 mx-auto h-[175px] md:h-[200px]`}/>
+            <div className="flex flex-col w-full rounded-3xl">
+                <ProjectImage imageSrc={project.images[0]} projectTitle={project.title} className="aspect-video object-cover rounded-3xl my-5 mx-auto h-[175px] md:h-[200px]"/>
 
                 <h2 className="text-xl font-semibold mx-auto mb-5">{project.title}</h2>
             </div>
 
-            <div
-                ref={(el) => (contentRefs.current[index] = el)}
-                className={`flex-1 p-4 text-sm ${expandedIndex === index ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none absolute z-0'}`}
-            >
+            <div className={`flex-1 p-4 text-sm ${isExpanded ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none absolute z-0'}`}>
                 <div className="flex flex-row gap-2 my-5">
                     {project.tech.map((Icon, i) => (
                         <Icon key={i} className="tech-logo"/>

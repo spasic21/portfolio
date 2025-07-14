@@ -11,6 +11,7 @@ gsap.registerPlugin(Flip);
 const Hero = forwardRef((props, ref) => {
     const [isZoomed, setIsZoomed] = useState(false);
     const profileRef = useRef(null);
+    const isMobile = window.innerWidth <= 768;
 
     useGSAP(() => {
         gsap.fromTo(
@@ -44,8 +45,8 @@ const Hero = forwardRef((props, ref) => {
                 left: "50%",
                 xPercent: -50,
                 yPercent: -50,
-                width: "1000px",
-                height: "1000px",
+                width: isMobile ? "90vw" : "50vw",
+                height: "auto",
                 zIndex: 50,
             });
 

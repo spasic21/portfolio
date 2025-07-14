@@ -1,7 +1,6 @@
 import {useRef} from "react";
 import {Navbar, Hero, ProjectShowcase, WorkExperience, TechStack, Contact} from "./sections/sectionIndex";
 
-
 const App = () => {
     const heroRef = useRef(null);
     const projectRef = useRef(null);

@@ -79,7 +79,7 @@ export const heroWords = [
 
 export const personalProjects = [
     {
-        title: 'Java Pokemon Game (Ongoing)',
+        title: 'Java Pokemon Game',
         description: 'A Java turn-based RPG inspired by classic Pokémon mechanics. ' +
             'Features include AI battles, type-based attacks, health management, and a custom game loop. All built without external engines. ' +
             'Demonstrates strong object-oriented design and Java GUI development. Instructions are on GitHub.',
