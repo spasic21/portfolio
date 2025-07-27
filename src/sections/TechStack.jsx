@@ -42,14 +42,14 @@ const TechStack = forwardRef((props, ref) => {
         <section ref={ref} className="c-space my-20 scroll-mt-20">
             <h3 className="head-text">Tech Stack</h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-10 sm:py-10 py-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-10 py-5 sm:py-10">
                 {techStackIcons.map((icon) => (
-                    <div key={icon.name} className="tech-card group bg-black-200 rounded-lg xl:rounded-full overflow-hidden">
+                    <div key={icon.name} className="tech-card group bg-black-200 rounded-3xl overflow-hidden py-5">
                         {isLargeScreen && (
                             <div className="absolute left-0 bottom-[-100%] w-full h-full bg-[#2D3240] group-hover:bottom-0 transition-all duration-700"/>
                         )}
 
-                        <div className="flex flex-col md:justify-center items-center xl:gap-5 xl:h-[50vh] overflow-hidden relative z-10 group-hover:cursor-grab">
+                        <div className="flex flex-col md:justify-center items-center xl:gap-5 overflow-hidden relative z-10 group-hover:cursor-grab">
                             <div className="flex justify-center items-center w-52 h-60 relative">
                                 <TechIconCard model={icon}/>
                             </div>
