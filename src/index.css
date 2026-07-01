@@ -5,8 +5,26 @@
 }
 
 body {
-    background: #010103;
+    background: #0A1420;
+    color: #E8E4D6;
     font-family: 'General Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Keyboard focus — visible on the sea-navy base */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+    outline: 2px solid #F2A93B;
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 @layer utilities {
@@ -15,11 +33,21 @@ body {
     }
 
     .tool-tip {
-        @apply absolute top-full left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-gray-800 text-white text-xs px-2 py-1 mt-1 rounded z-10 whitespace-nowrap;
+        @apply absolute top-full left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-ink text-foam border border-black-500 font-mono text-xs px-2 py-1 mt-1 rounded z-10 whitespace-nowrap;
+    }
+
+    /* Section eyebrow — a ship's-log entry: mono, gold, wide-tracked */
+    .eyebrow {
+        @apply inline-flex items-center gap-2 font-mono uppercase text-xs sm:text-sm tracking-[0.25em] text-gold;
+    }
+
+    .eyebrow::before {
+        content: "";
+        @apply inline-block w-6 h-px bg-gold/60;
     }
 
     .head-text {
-        @apply sm:text-4xl text-3xl font-semibold text-white;
+        @apply font-display sm:text-5xl text-4xl font-semibold text-foam tracking-tight mt-3;
     }
 
     .navbar {
@@ -35,6 +63,14 @@ body {
 
         .underline {
             @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+        }
+
+        button.is-active {
+            @apply text-gold;
+        }
+
+        button.is-active .underline {
+            @apply w-full bg-gold;
         }
     }
 
@@ -145,11 +181,16 @@ body {
     }
 
     .work-content_logo {
-        @apply rounded-3xl w-16 h-16 p-2 bg-black-600;
+        @apply rounded-full w-16 h-16 p-2 bg-black-600 ring-1 ring-black-500 group-hover:ring-gold transition-all duration-500;
+    }
+
+    /* Gold port marker pinned to the rail */
+    .port-node {
+        @apply absolute -bottom-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-gold ring-4 ring-abyss opacity-70 group-hover:opacity-100 transition-opacity duration-500;
     }
 
     .work-content_bar {
-        @apply flex-1 w-0.5 mt-4 h-full bg-black-300 group-hover:bg-black-500 group-last:hidden;
+        @apply flex-1 w-0.5 mt-4 h-full bg-black-300 group-hover:bg-gold/40 group-last:hidden transition-colors duration-500;
     }
 
     /* contact section */
@@ -162,15 +203,19 @@ body {
     }
 
     .field-input {
-        @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
+        @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg border border-transparent placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl transition-colors focus:outline-none focus:border-gold/60;
     }
 
     .field-btn {
-        @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
+        @apply bg-gold px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg font-semibold text-abyss gap-3 transition-transform hover:-translate-y-0.5;
     }
 
     .field-btn_arrow {
-        @apply w-6 h-6 object-contain invert brightness-0;
+        @apply w-6 h-6 object-contain;
+    }
+
+    .contact-link {
+        @apply inline-flex items-center gap-2 rounded-lg border border-black-300 px-3 py-2 text-sm text-white-700 hover:border-gold/50 hover:text-gold transition-colors;
     }
 
     /*  footer */
@@ -181,24 +226,34 @@ body {
 
 @theme {
     --font-generalsans: 'General Sans', sans-serif;
+    --font-display: 'Clash Display', 'General Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
     --breakpoint-3xl: 120rem;
     --breakpoint-4xl: 144rem;
 
+    /* The Navigator's Log palette */
+    --color-abyss: #0A1420;   /* deep sea — base */
+    --color-ink: #0E1C2B;     /* raised panels */
+    --color-gold: #F2A93B;    /* Sunny's mane/sail — the one accent */
+    --color-foam: #E8E4D6;    /* weathered sail — body text */
+    --color-teal: #3FA6A0;    /* Grand-Line sea — links/data */
+    --color-rust: #C5533B;    /* Sunny's hull — rare emphasis */
+
     --color-black: #000000;
-    --color-black-50: #1c1c21;
-    --color-black-100: #010103;
-    --color-black-200: #0E0E10;
-    --color-black-300: #1C1C21;
-    --color-black-500: #3A3A49;
-    --color-black-600: #1A1A1A;
+    --color-black-50: #16293B;
+    --color-black-100: #0A1420;
+    --color-black-200: #0E1C2B;
+    --color-black-300: #16293B;
+    --color-black-500: #24405A;
+    --color-black-600: #0A1420;
 
     --color-white: #FFFFFF;
     --color-white-50: #d9ecff;
-    --color-white-500: #62646C;
-    --color-white-600: #AFB0B6;
-    --color-white-700: #D6D9E9;
-    --color-white-800: #E4E4E6;
+    --color-white-500: #5C6E7A;
+    --color-white-600: #9AA9B5;
+    --color-white-700: #C6D2DA;
+    --color-white-800: #E8E4D6;
 
     --animate-wave: wave 1.5s ease-in-out infinite;
 

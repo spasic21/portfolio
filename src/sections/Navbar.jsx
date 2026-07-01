@@ -2,12 +2,16 @@ import {useState} from "react";
 import {navLinks} from "../constants/index";
 import {RiCloseLine, RiGithubFill, RiLinkedinFill, RiMenuFill} from "react-icons/ri";
 
-const NavItems = ({onNavClick}) => {
+const NavItems = ({onNavClick, activeSection}) => {
     return (
         <ul className="navbar">
             {navLinks.map(({id, name}) => (
                 <li key={id}>
-                    <button className="group" onClick={onNavClick[name]}>
+                    <button
+                        className={`group ${activeSection === name ? "is-active" : ""}`}
+                        onClick={onNavClick[name]}
+                        aria-current={activeSection === name ? "true" : undefined}
+                    >
                         <span>{name}</span>
                         <span className="underline"/>
                     </button>
@@ -17,7 +21,7 @@ const NavItems = ({onNavClick}) => {
     );
 };
 
-const Navbar = ({onNavClick}) => {
+const Navbar = ({onNavClick, activeSection}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => setIsOpen((prevState) => !prevState);
@@ -27,8 +31,11 @@ const Navbar = ({onNavClick}) => {
             <div className="max-w-7xl mx-auto">
                 <div className="flex items-center justify-between py-5 mx-auto c-space">
                     <div className="flex items-center gap-5">
-                        <a href="/portfolio" className="group relative">
-                            <p className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">Aleksandar</p>
+                        <a href="/portfolio" className="group relative flex items-center gap-3">
+                            <p className="font-display text-foam font-bold text-xl hover:text-gold transition-colors">Aleksandar</p>
+                            <span className="hidden lg:inline font-mono text-xs tracking-[0.2em] text-gold/80 uppercase">
+                                &#8982; {activeSection}
+                            </span>
 
                             <span className="tool-tip">
                                 That's Me <span className="inline-block animate-wave origin-[70%_70%]">👋</span>
@@ -59,7 +66,7 @@ const Navbar = ({onNavClick}) => {
                     </button>
 
                     <nav className="sm:flex hidden">
-                        <NavItems onNavClick={onNavClick}/>
+                        <NavItems onNavClick={onNavClick} activeSection={activeSection}/>
                     </nav>
                 </div>
             </div>

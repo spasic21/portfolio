@@ -33,25 +33,26 @@ const Slideshow = ({ images }) => {
 
     if (!images || images.length === 0) {
         return (
-            <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full flex items-center justify-center">
-                <p className="text-white-600">No images provided</p>
+            <div className="border border-black-300 bg-abyss rounded-2xl h-64 flex items-center justify-center">
+                <p className="text-white-600 font-mono text-sm">No screenshots logged</p>
             </div>
         );
     }
 
     const isVideo = path => path.toLowerCase().endsWith('.mp4');
+    const stop = (fn) => (e) => { e.stopPropagation(); fn(); };
 
     return (
-        <div className="border border-black-300 bg-black-200 rounded-3xl h-96 md:h-full relative">
-            <div className="w-full h-full overflow-hidden rounded-lg flex justify-center items-center p-5">
+        <div className="bg-abyss rounded-2xl h-[30vh] md:h-[38vh] relative overflow-hidden border border-black-300">
+            <div className="w-full h-full flex justify-center items-center">
                 {isVideo(images[currentIndex]) ? (
                     <video
-                        className="w-full h-[36rem] object-contain"
-                        style={{ borderRadius: '10px' }}
+                        className="w-full h-full object-contain"
                         autoPlay
                         loop
                         muted
                         playsInline
+                        preload="metadata"
                         key={images[currentIndex]}
                     >
                         <source src={images[currentIndex]} type="video/mp4" />
@@ -60,37 +61,50 @@ const Slideshow = ({ images }) => {
                 ) : (
                     <img
                         src={images[currentIndex]}
-                        alt={`Slide ${currentIndex + 1}`}
-                        className="w-full h-[36rem] object-contain"
-                        style={{ borderRadius: '10px' }}
+                        alt={`Screenshot ${currentIndex + 1} of ${images.length}`}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                        decoding="async"
                     />
                 )}
             </div>
 
-            <button
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
-                onClick={goToPrevious}
-            >
-                <RiArrowLeftLine className="w-6 h-6" />
-            </button>
-            <button
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
-                onClick={goToNext}
-            >
-                <RiArrowRightLine className="w-6 h-6" />
-            </button>
+            {/* Log coordinate — which frame of the record you're viewing */}
+            <span className="absolute top-3 left-3 font-mono text-[11px] tracking-[0.2em] text-gold/90 bg-abyss/70 px-2 py-1 rounded">
+                {String(currentIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+            </span>
 
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                {images.map((_, index) => (
+            {images.length > 1 && (
+                <>
                     <button
-                        key={index}
-                        className={`w-3 h-3 rounded-full ${
-                            currentIndex === index ? 'bg-white' : 'bg-gray-400'
-                        }`}
-                        onClick={() => goToSlide(index)}
-                    />
-                ))}
-            </div>
+                        aria-label="Previous screenshot"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-ink/80 text-foam p-2 rounded-full hover:bg-gold hover:text-abyss transition-colors"
+                        onClick={stop(goToPrevious)}
+                    >
+                        <RiArrowLeftLine className="w-5 h-5" />
+                    </button>
+                    <button
+                        aria-label="Next screenshot"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-ink/80 text-foam p-2 rounded-full hover:bg-gold hover:text-abyss transition-colors"
+                        onClick={stop(goToNext)}
+                    >
+                        <RiArrowRightLine className="w-5 h-5" />
+                    </button>
+
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                        {images.map((_, index) => (
+                            <button
+                                key={index}
+                                aria-label={`Go to screenshot ${index + 1}`}
+                                className={`h-1.5 rounded-full transition-all ${
+                                    currentIndex === index ? 'w-5 bg-gold' : 'w-1.5 bg-white-500'
+                                }`}
+                                onClick={stop(() => goToSlide(index))}
+                            />
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
     );
 }

@@ -28,6 +28,7 @@ const WorkExperience = forwardRef((props, ref) => {
     return (
         <section ref={ref} className="c-space my-20 scroll-mt-20">
             <div className="w-full text-white-600">
+                <p className="eyebrow">Ship's Log &middot; Ports of Call</p>
                 <h3 className="head-text">Work Experience</h3>
 
                 <div className="sm:py-10 py-5 sm:px-5 px-2.5">

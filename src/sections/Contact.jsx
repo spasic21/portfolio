@@ -1,6 +1,6 @@
 import {forwardRef, Suspense, useEffect, useState} from "react";
 import emailjs from '@emailjs/browser';
-import {RiArrowRightUpLine} from "react-icons/ri";
+import {RiArrowRightUpLine, RiCheckLine, RiGithubFill, RiLinkedinFill, RiMailLine} from "react-icons/ri";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls} from "@react-three/drei";
 import CanvasLoader from "../components/CanvasLoader.jsx";
@@ -10,6 +10,19 @@ const Contact = forwardRef((props, ref) => {
     const [loading, setLoading] = useState(false);
     const [statusMessage, setStatusMessage] = useState(null);
     const [animationName, setAnimationName] = useState("idle");
+    const [copied, setCopied] = useState(false);
+
+    const email = "aspasic21@gmail.com";
+
+    const copyEmail = async () => {
+        try {
+            await navigator.clipboard.writeText(email);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch {
+            window.location.href = `mailto:${email}`;
+        }
+    };
 
     const [form, setForm] = useState({
         name: '',
@@ -66,6 +79,7 @@ const Contact = forwardRef((props, ref) => {
         <section ref={ref} className="c-space my-20 scroll-mt-20">
             <div className="min-h-96 grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
                 <div>
+                    <p className="eyebrow">Send a Signal &middot; Get in Touch</p>
                     <h3 className="head-text">Contact Me</h3>
                     <form onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
                         <label className="space-y-3">
@@ -131,12 +145,36 @@ const Contact = forwardRef((props, ref) => {
                             <RiArrowRightUpLine className="field-btn_arrow"/>
                         </button>
 
-                        {statusMessage && (
-                            <p className={`text-center text-sm mt-2 ${statusMessage.type === "success" ? "text-green-400" : "text-red-400"}`}>
-                                {statusMessage.text}
-                            </p>
-                        )}
+                        <p
+                            role="status"
+                            aria-live="polite"
+                            className={`text-center text-sm min-h-[1.25rem] font-mono ${statusMessage ? (statusMessage.type === "success" ? "text-teal" : "text-rust") : ""}`}
+                        >
+                            {statusMessage?.text}
+                        </p>
                     </form>
+
+                    {/* Fallback hailing frequencies — for anyone who'd rather skip the form */}
+                    <div className="mt-8 flex flex-col gap-3">
+                        <p className="eyebrow">Or Send Word</p>
+                        <div className="flex flex-wrap gap-3">
+                            <button
+                                type="button"
+                                onClick={copyEmail}
+                                aria-label={copied ? "Email address copied" : `Copy email address ${email}`}
+                                className={`contact-link ${copied ? "border-gold/60 text-gold" : ""}`}
+                            >
+                                {copied ? <RiCheckLine className="w-5 h-5"/> : <RiMailLine className="w-5 h-5"/>}
+                                {copied ? "Copied!" : email}
+                            </button>
+                            <a href="https://github.com/spasic21" target="_blank" rel="noreferrer" className="contact-link">
+                                <RiGithubFill className="w-5 h-5"/> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/aleksandar-spasic-628094a6" target="_blank" rel="noreferrer" className="contact-link">
+                                <RiLinkedinFill className="w-5 h-5"/> LinkedIn
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="work-canvas">

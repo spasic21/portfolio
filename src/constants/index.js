@@ -54,6 +54,7 @@ export const heroWords = Array.from({length: 3}, () => baseHeroWords).flat();
 export const personalProjects = [
     {
         title: 'Java Pokemon Game',
+        tagline: 'A turn-based RPG engine built from scratch in Java — no game frameworks.',
         description: 'A Java turn-based RPG inspired by classic Pokémon mechanics. ' +
             'Features include AI battles, type-based attacks, health management, and a custom game loop. All built without external engines. ' +
             'Demonstrates strong object-oriented design and Java GUI development. Instructions are on GitHub.',
@@ -73,6 +74,7 @@ export const personalProjects = [
     },
     {
         title: 'Pokemon API',
+        tagline: 'A Spring Boot REST API serving all 251 Gen-I & II Pokémon.',
         description: 'Developed a RESTful API with Java and Spring Boot to serve structured Pokémon data for the Pokemon game I created. ' +
             'Supports efficient retrieval by Pokédex number or range (1–251), showcasing scalable design and clean data access to power game logic.',
         navLinks: [
@@ -91,6 +93,7 @@ export const personalProjects = [
     },
     {
         title: 'Music Player App',
+        tagline: 'A Spotify-style streaming client in React, Redux & Tailwind.',
         description: 'Built a Spotify-style music player using React, Tailwind CSS, and Redux, integrated with a custom proxy server to fetch and stream music from the Deezer API. ' +
             'Features include track browsing, genre filtering, and responsive playback controls in a sleek, modern UI.',
         navLinks: [

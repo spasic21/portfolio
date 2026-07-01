@@ -13,22 +13,30 @@ const Hero = forwardRef((props, ref) => {
     const isMobile = useMediaQuery({maxWidth: 768});
 
     useGSAP(() => {
-        gsap.fromTo(
-            ".hero-text",
-            {y: 50, opacity: 0},
-            {y: 5, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut"}
-        );
+        const mm = gsap.matchMedia();
 
-        const steps = heroWords.length;
-        const duration = 20;
-        const timeline = gsap.timeline({repeat: -1, ease: "none"});
+        // Full arrival choreography — only when motion is welcome.
+        mm.add("(prefers-reduced-motion: no-preference)", () => {
+            const arrival = gsap.timeline({defaults: {ease: "power3.out"}});
+            arrival
+                .from(".hero-text .eyebrow", {opacity: 0, x: -24, duration: 0.6})
+                .from(".hero-text h1", {opacity: 0, y: 32, stagger: 0.12, duration: 0.7}, "-=0.15")
+                // clearProps: don't leave a transform behind — it would become the containing
+                // block for the fixed-position profile zoom and break its centering.
+                .from(".hero-intro", {opacity: 0, y: 20, duration: 0.7, clearProps: "transform"}, "-=0.35");
 
-        for (let i = 1; i <= steps; i++) {
-            timeline.to(".wrapper", {
-                yPercent: -100 * i / steps,
-                duration: duration / steps
-            });
-        }
+            // Rotating words start once the headline has settled.
+            const steps = heroWords.length;
+            const duration = 20;
+            const slider = gsap.timeline({repeat: -1, ease: "none", delay: 0.6});
+
+            for (let i = 1; i <= steps; i++) {
+                slider.to(".wrapper", {
+                    yPercent: -100 * i / steps,
+                    duration: duration / steps
+                });
+            }
+        });
     }, []);
 
     const toggleZoom = () => {
@@ -78,21 +86,27 @@ const Hero = forwardRef((props, ref) => {
                             <source src={video} type="video/mp4"/>
                         </video>
 
+                        {/* Scrim — pulls the footage into the sea-navy palette and keeps overlaid text legible */}
+                        <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-abyss/85 via-abyss/25 to-abyss/70"/>
+
                         <div className="flex flex-col gap-7 absolute inset-0 justify-between">
                             <div className="hero-text">
-                                <h1>
+                                <p className="eyebrow not-italic mb-3 md:mb-5 pointer-events-auto">
+                                    Log 01 &middot; Grand Line &middot; Software Engineer
+                                </p>
+                                <h1 className="font-display">
                                     Turning
                                     <span className="slide">
                                         <span className="wrapper">
                                             {heroWords.map((word, index) => (
                                                 <span
                                                     key={index}
-                                                    className="flex items-center md:gap-3 gap-1 pb-2"
+                                                    className="flex items-center md:gap-3 gap-1 pb-2 text-gold"
                                                 >
                                                     <img
                                                         src={word.imgPath}
                                                         alt={word.text}
-                                                        className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white"
+                                                        className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-gold ring-1 ring-gold/60"
                                                     />
                                                     <span>{word.text}</span>
                                                 </span>
@@ -100,27 +114,27 @@ const Hero = forwardRef((props, ref) => {
                                         </span>
                                     </span>
                                 </h1>
-                                <h1>into Real-World Solutions</h1>
-                                <h1>that Make a Difference.</h1>
+                                <h1 className="font-display">into Real-World Solutions</h1>
+                                <h1 className="font-display">that Make a Difference.</h1>
                             </div>
 
-                            <div className="flex flex-row relative gap-5 left-5 bottom-5 md:left-10 md:bottom-10">
+                            <div className="hero-intro flex flex-row relative gap-5 left-5 bottom-5 md:left-10 md:bottom-10">
                                 <img
                                     ref={profileRef}
                                     src={profilePic}
                                     alt="profile-pic"
-                                    className="rounded-full object-contain size-16 md:size-64 cursor-pointer z-20"
+                                    className="rounded-full object-contain size-16 md:size-64 cursor-pointer z-30"
                                     onClick={toggleZoom}
                                 />
 
-                                <div className="flex flex-col gap-1 justify-end text-white">
-                                    <p className="text-base md:text-xl font-semibold">
-                                        Hi, I'm Aleksandar!
+                                <div className="flex flex-col gap-1 justify-end text-foam">
+                                    <p className="text-base md:text-xl font-semibold font-display">
+                                        Hi, I'm <span className="text-gold">Aleksandar</span>
                                     </p>
 
-                                    <div className="hidden md:flex md:flex-col">
-                                        <p className="text-white text-base">A software developer based in the United States,</p>
-                                        <p className="text-white text-base">who is passionate about coding.</p>
+                                    <div className="hidden md:flex md:flex-col text-white-600">
+                                        <p className="text-base">A software engineer based in the United States,</p>
+                                        <p className="text-base">charting a course through Java, Go, and the web.</p>
                                     </div>
                                 </div>
                             </div>
