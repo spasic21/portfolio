@@ -5,13 +5,12 @@ import video from "../assets/thousand_sunny.mp4";
 import profilePic from "../assets/profile-pic.jpg";
 import {heroWords} from "../constants/index";
 import {forwardRef, useRef, useState} from "react";
-
-gsap.registerPlugin(Flip);
+import {useMediaQuery} from "react-responsive";
 
 const Hero = forwardRef((props, ref) => {
     const [isZoomed, setIsZoomed] = useState(false);
     const profileRef = useRef(null);
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = useMediaQuery({maxWidth: 768});
 
     useGSAP(() => {
         gsap.fromTo(
@@ -75,7 +74,7 @@ const Hero = forwardRef((props, ref) => {
             <section ref={ref} className="c-space my-20 scroll-mt-20">
                 <div className="relative gap-5 w-full h-full">
                     <div className="aspect-video relative">
-                        <video className="w-full h-full rounded-3xl object-cover" autoPlay loop muted>
+                        <video className="w-full h-full rounded-3xl object-cover" autoPlay loop muted playsInline preload="metadata">
                             <source src={video} type="video/mp4"/>
                         </video>
 
@@ -92,7 +91,7 @@ const Hero = forwardRef((props, ref) => {
                                                 >
                                                     <img
                                                         src={word.imgPath}
-                                                        alt={word}
+                                                        alt={word.text}
                                                         className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white"
                                                     />
                                                     <span>{word.text}</span>

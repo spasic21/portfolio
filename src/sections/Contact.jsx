@@ -1,4 +1,4 @@
-import {forwardRef, Suspense, useRef, useState} from "react";
+import {forwardRef, Suspense, useEffect, useState} from "react";
 import emailjs from '@emailjs/browser';
 import {RiArrowRightUpLine} from "react-icons/ri";
 import {Canvas} from "@react-three/fiber";
@@ -7,8 +7,8 @@ import CanvasLoader from "../components/CanvasLoader.jsx";
 import Avatar from "../components/Avatar.jsx";
 
 const Contact = forwardRef((props, ref) => {
-    const formRef = useRef();
     const [loading, setLoading] = useState(false);
+    const [statusMessage, setStatusMessage] = useState(null);
     const [animationName, setAnimationName] = useState("idle");
 
     const [form, setForm] = useState({
@@ -16,6 +16,13 @@ const Contact = forwardRef((props, ref) => {
         email: '',
         message: ''
     });
+
+    useEffect(() => {
+        if (statusMessage) {
+            const timer = setTimeout(() => setStatusMessage(null), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [statusMessage]);
 
     const handleChange = ({target: {name, value}}) => {
         setForm({ ...form, [name]: value });
@@ -25,11 +32,10 @@ const Contact = forwardRef((props, ref) => {
         e.preventDefault();
         setLoading(true);
 
-        // Service and Template IDs are from EmailJS service.
-
         try {
-            await emailjs.send('service_hetr3km',
-                'template_8k6zafm',
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 {
                     from_name: form.name,
                     to_name: "Aleksandar Spasic",
@@ -37,12 +43,11 @@ const Contact = forwardRef((props, ref) => {
                     to_email: 'aspasic21@gmail.com',
                     message: form.message
                 },
-                "95nlsr1n4b_1AB4D4"
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             )
 
             setLoading(false);
-
-            alert("Your message has ben sent!");
+            setStatusMessage({ type: "success", text: "Your message has been sent!" });
 
             setForm({
                 name: "",
@@ -50,10 +55,10 @@ const Contact = forwardRef((props, ref) => {
                 message: ""
             });
 
-        }catch (error) {
+        } catch (error) {
             setLoading(false);
             console.log(error);
-            alert("Something went wrong!");
+            setStatusMessage({ type: "error", text: "Something went wrong. Please try again." });
         }
     }
 
@@ -62,7 +67,7 @@ const Contact = forwardRef((props, ref) => {
             <div className="min-h-96 grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
                 <div>
                     <h3 className="head-text">Contact Me</h3>
-                    <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
+                    <form onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
                         <label className="space-y-3">
                             <span className="field-label">
                                 Full Name
@@ -111,7 +116,7 @@ const Contact = forwardRef((props, ref) => {
                                 required
                                 rows={5}
                                 className="field-input"
-                                placeholder="Hi, I wanna give you a job..."
+                                placeholder="I'd love to discuss an opportunity..."
                             />
                         </label>
 
@@ -125,6 +130,12 @@ const Contact = forwardRef((props, ref) => {
                             {loading ? 'Sending...' : 'Send Message'}
                             <RiArrowRightUpLine className="field-btn_arrow"/>
                         </button>
+
+                        {statusMessage && (
+                            <p className={`text-center text-sm mt-2 ${statusMessage.type === "success" ? "text-green-400" : "text-red-400"}`}>
+                                {statusMessage.text}
+                            </p>
+                        )}
                     </form>
                 </div>
 

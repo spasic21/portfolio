@@ -3,12 +3,11 @@ import gsap from "gsap";
 import Flip from "gsap/Flip";
 import {useGSAP} from "@gsap/react";
 import {useRef} from "react";
-
-gsap.registerPlugin(Flip);
+import {useMediaQuery} from "react-responsive";
 
 const ProjectCard = ({project, index, isExpanded, toggleExpand}) => {
     const cardRef = useRef(null);
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = useMediaQuery({maxWidth: 768});
 
     useGSAP(() => {
         if (!cardRef.current) return;
@@ -67,26 +66,21 @@ const ProjectCard = ({project, index, isExpanded, toggleExpand}) => {
                 <p className="text-sm md:text-base">{project.description}</p>
 
                 <div className="flex flex-row justify-center gap-40 py-2">
-                    {project.navLinks.map(({icon: Icon, href}, i) => {
-                        let toolTip = href.includes(".com") ? "Checkout Github Repo!" : "Checkout Live Site!";
-                        toolTip = href.includes(".jar") ? "Download Jar File!" : toolTip;
+                    {project.navLinks.map(({icon: Icon, href, label}, i) => (
+                        <a
+                            key={i}
+                            className="relative group flex items-center cursor-pointer"
+                            href={href}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <Icon className="tech-logo text-neutral-400 hover:text-white"/>
 
-                        return (
-                            <a
-                                key={i}
-                                className="relative group flex items-center cursor-pointer"
-                                href={href}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <Icon className="tech-logo text-neutral-400 hover:text-white"/>
-
-                                <span className="tool-tip">
-                                    {toolTip}
-                                </span>
-                            </a>
-                        );
-                    })}
+                            <span className="tool-tip">
+                                {label}
+                            </span>
+                        </a>
+                    ))}
                 </div>
             </div>
         </div>

@@ -10,8 +10,6 @@ import {
 
 import {RiGithubFill, RiMusic2Line} from "react-icons/ri";
 import {CgPokemon} from "react-icons/cg";
-import {css, docker, git, html, java, javascript, react, springboot, tailwindcss, threejs} from "../assets";
-
 import creativity from "../assets/creativity.svg";
 import strategy from "../assets/strategy.svg";
 import code from "../assets/code.svg";
@@ -30,7 +28,7 @@ import luffyGameboy from "../assets/luffyGameboy.jpg";
 import luffyPokeball from "../assets/luffyPokeball.jpg";
 import luffyMusic from "../assets/luffyMusic.jpg"
 
-
+import gridbaseLogo from "../assets/gridbase_logo.png";
 import oldDominionFreightLineLogo from "../assets/old_dominion_freight_line_logo.png";
 import bestBuyLogo from "../assets/best_buy_logo.png";
 import marriottVacationsWorldwideLogo from "../assets/marriott_vacations_worldwide_logo.png";
@@ -38,44 +36,20 @@ import andersenWindowsLogo from "../assets/andersen_windows_logo.png";
 import expressScriptsLogo from "../assets/express_scripts_logo.png";
 
 export const navLinks = [
-    {
-        id: 1,
-        name: 'Home',
-        href: '#home',
-    },
-    {
-        id: 2,
-        name: 'Projects',
-        href: '#projects',
-    },
-    {
-        id: 3,
-        name: 'Work',
-        href: '#work',
-    },
-    {
-        id: 4,
-        name: 'Tech',
-        href: '#tech',
-    },
-    {
-        id: 5,
-        name: 'Contact',
-        href: '#contact',
-    },
+    { id: 1, name: 'Home' },
+    { id: 2, name: 'Projects' },
+    { id: 3, name: 'Work' },
+    { id: 4, name: 'Tech' },
+    { id: 5, name: 'Contact' },
 ];
 
-export const heroWords = [
+const baseHeroWords = [
     {text: 'Creativity', imgPath: creativity},
     {text: 'Strategy', imgPath: strategy},
     {text: 'Code', imgPath: code},
-    {text: 'Creativity', imgPath: creativity},
-    {text: 'Strategy', imgPath: strategy},
-    {text: 'Code', imgPath: code},
-    {text: 'Creativity', imgPath: creativity},
-    {text: 'Strategy', imgPath: strategy},
-    {text: 'Code', imgPath: code}
 ];
+
+export const heroWords = Array.from({length: 3}, () => baseHeroWords).flat();
 
 export const personalProjects = [
     {
@@ -84,8 +58,8 @@ export const personalProjects = [
             'Features include AI battles, type-based attacks, health management, and a custom game loop. All built without external engines. ' +
             'Demonstrates strong object-oriented design and Java GUI development. Instructions are on GitHub.',
         navLinks: [
-            {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonClone'},
-            {icon: CgPokemon, href: 'https://github.com/spasic21/PokemonClone/releases/download/v1.0/PokemonClone.jar'}
+            {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonClone', label: 'Checkout Github Repo!'},
+            {icon: CgPokemon, href: 'https://github.com/spasic21/PokemonClone/releases/download/v1.0/PokemonClone.jar', label: 'Download Jar File!'}
         ],
         logo: luffyGameboy,
         tech: [
@@ -102,7 +76,7 @@ export const personalProjects = [
         description: 'Developed a RESTful API with Java and Spring Boot to serve structured Pokémon data for the Pokemon game I created. ' +
             'Supports efficient retrieval by Pokédex number or range (1–251), showcasing scalable design and clean data access to power game logic.',
         navLinks: [
-            {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonApi'}
+            {icon: RiGithubFill, href: 'https://github.com/spasic21/PokemonApi', label: 'Checkout Github Repo!'}
         ],
         logo: luffyPokeball,
         tech: [
@@ -120,8 +94,8 @@ export const personalProjects = [
         description: 'Built a Spotify-style music player using React, Tailwind CSS, and Redux, integrated with a custom proxy server to fetch and stream music from the Deezer API. ' +
             'Features include track browsing, genre filtering, and responsive playback controls in a sleek, modern UI.',
         navLinks: [
-            {icon: RiGithubFill, href: 'https://github.com/spasic21/react-music-app'},
-            {icon: RiMusic2Line, href: 'https://spasic21.github.io/react-music-app/'}
+            {icon: RiGithubFill, href: 'https://github.com/spasic21/react-music-app', label: 'Checkout Github Repo!'},
+            {icon: RiMusic2Line, href: 'https://spasic21.github.io/react-music-app/', label: 'Checkout Live Site!'}
         ],
         logo: luffyMusic,
         tech: [
@@ -142,9 +116,21 @@ export const personalProjects = [
 export const workExperiences = [
     {
         id: 1,
+        name: 'Gridbase',
+        position: 'Software Engineer',
+        duration: 'October 2025 - June 2026',
+        responsibilities: [
+            "Directed AI-assisted development (Claude Code) to rapidly implement features in Go and TypeScript, significantly increasing delivery speed to meet business timelines.",
+            "Conducted thorough code review of AI-generated code, validating correctness, catching edge cases, and ensuring production readiness before deployment.",
+            "Collaborated with leadership to adopt AI-augmented engineering workflows as a means of accelerating feature delivery without sacrificing quality."
+        ],
+        icon: gridbaseLogo,
+    },
+    {
+        id: 2,
         name: 'Old Dominion Freight Line',
         position: 'Associate Software Engineer',
-        duration: 'December 2022 – Present',
+        duration: 'December 2022 - October 2025',
         responsibilities: [
             "Developed a Java and SQL-based UI and web service for freight line information and route projections, improving trailer time estimation.",
             "Led migration from Subversion to GitLab, implementing CI/CD pipelines to enhance deployment speed.",
@@ -153,7 +139,7 @@ export const workExperiences = [
         icon: oldDominionFreightLineLogo,
     },
     {
-        id: 2,
+        id: 3,
         name: 'Best Buy',
         position: 'Software Engineer (Java & Spring Boot)',
         duration: 'May 2022 - November 2022',
@@ -165,7 +151,7 @@ export const workExperiences = [
         icon: bestBuyLogo,
     },
     {
-        id: 3,
+        id: 4,
         name: 'Marriott Vacations Worldwide',
         position: 'Back-End Java Developer',
         duration: 'April 2021 - April 2022',
@@ -177,7 +163,7 @@ export const workExperiences = [
         icon: marriottVacationsWorldwideLogo,
     },
     {
-        id: 4,
+        id: 5,
         name: 'Andersen Windows',
         position: 'Software Engineer',
         duration: 'October 2019 - March 2020',
@@ -188,7 +174,7 @@ export const workExperiences = [
         icon: andersenWindowsLogo,
     },
     {
-        id: 5,
+        id: 6,
         name: 'Express Scripts',
         position: 'Back-End Java Developer',
         duration: 'December 2018 - June 2019',
@@ -198,49 +184,6 @@ export const workExperiences = [
             "Strengthened code reliability with JUnit and Mockito unit testing."
         ],
         icon: expressScriptsLogo,
-    }
-];
-
-export const technologies = [
-    {
-        name: "Java",
-        icon: java
-    },
-    {
-        name: "Spring Boot",
-        icon: springboot
-    },
-    {
-        name: "Html",
-        icon: html
-    },
-    {
-        name: "JavaScript",
-        icon: javascript
-    },
-    {
-        name: "CSS",
-        icon: css
-    },
-    {
-        name: "React",
-        icon: react
-    },
-    {
-        name: "Tailwind CSS",
-        icon: tailwindcss
-    },
-    {
-        name: "Three",
-        icon: threejs
-    },
-    {
-        name: "Git",
-        icon: git
-    },
-    {
-        name: "Docker",
-        icon: docker
     }
 ];
 

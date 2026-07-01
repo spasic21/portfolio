@@ -2,14 +2,14 @@ import {workExperiences} from "../constants/index.js";
 import WorkCard from "../components/WorkCard.jsx";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {forwardRef} from "react";
-
-gsap.registerPlugin(ScrollTrigger);
+import {useMediaQuery} from "react-responsive";
 
 const WorkExperience = forwardRef((props, ref) => {
+    const isLargeScreen = useMediaQuery({minWidth: 769});
+
     useGSAP(() => {
-        if(window.innerWidth > 768) {
+        if(isLargeScreen) {
             gsap.utils.toArray(".workText").forEach((text) => {
                 gsap.from(text, {
                     opacity: 0,
@@ -23,7 +23,7 @@ const WorkExperience = forwardRef((props, ref) => {
                 })
             }, "<");
         }
-    }, []);
+    }, [isLargeScreen]);
 
     return (
         <section ref={ref} className="c-space my-20 scroll-mt-20">

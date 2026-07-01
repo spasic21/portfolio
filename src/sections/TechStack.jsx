@@ -2,21 +2,11 @@ import {techStackIcons} from "../constants/index.js";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import TechIconCard from "../components/TechIconCard.jsx";
-import {forwardRef, useEffect, useState} from "react";
+import {forwardRef} from "react";
+import {useMediaQuery} from "react-responsive";
 
 const TechStack = forwardRef((props, ref) => {
-    const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-    useEffect(() => {
-        const checkScreenSize = () => {
-            setIsLargeScreen(window.innerWidth > 768);
-        };
-
-        checkScreenSize();
-        window.addEventListener("resize", checkScreenSize);
-
-        return () => window.removeEventListener("resize", checkScreenSize);
-    }, []);
+    const isLargeScreen = useMediaQuery({minWidth: 769});
 
     useGSAP(() => {
         if (!isLargeScreen) return;

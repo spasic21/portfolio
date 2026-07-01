@@ -1,10 +1,6 @@
 import {forwardRef, useState} from "react";
 import {personalProjects} from "../constants/index";
 import ProjectCard from "../components/ProjectCard";
-import Flip from "gsap/Flip";
-import gsap from "gsap";
-
-gsap.registerPlugin(Flip);
 
 const ProjectShowcase = forwardRef((props, ref) => {
     const [expandedIndex, setExpandedIndex] = useState(null);
